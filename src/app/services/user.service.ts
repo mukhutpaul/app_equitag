@@ -13,7 +13,7 @@ export class UserService {
 
   signup(data: any) {
     return this.httpClient.post(this.url +
-      "/user/signup", data, {
+      "/api/register/", data, {
       headers: new HttpHeaders().set('content-Type', "application.json")
     });
   }
@@ -26,7 +26,7 @@ export class UserService {
   }
   login(data:any){
     return this.httpClient.post(this.url+
-      "/user/login/",data,{
+      "/api/login/",data,{
         headers: new HttpHeaders().set('Content-Type',"application/json")
       })
   }
