@@ -18,6 +18,25 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { AddEquipementComponent } from './pages/add-equipement/add-equipement.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PdfViewerModule} from 'ng2-pdf-viewer'
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderConfig, PB_DIRECTION, SPINNER } from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  text:"Loading...",
+  textColor:"#FFFFFF",
+  textPosition:"center-center",
+  pbColor:"#596643",
+  bgsColor:"#596643",
+  fgsColor:"#596643",
+  fgsType:SPINNER.ballSpinClockwiseFadeRotating,
+  fgsSize:100,
+  pbDirection:PB_DIRECTION.leftToRight,
+  pbThickness:5
+}
 
 @NgModule({
   declarations: [
@@ -30,14 +49,20 @@ import {MatButtonModule} from '@angular/material/button';
     EquipementComponent,
     MenuComponent,
     DetenteurComponent,
-    EquipementDetenteurComponent
+    EquipementDetenteurComponent,
+    AddEquipementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    PdfViewerModule,
+    FormsModule,
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,19 +9,141 @@
    
         
       <div class="notika-status-area" style="background-color: white;">
+
+        <div class="modals-default-cl">
+          <div style="padding-top: 10px;">
+          <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-app"></i> Nouvel équipement</button>
+        </div>
+         
+          <div class="modal fade" id="myModalthree" role="dialog">
+              <div class="modal-dialog modal-large">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                       
+                              <h2>FORMULAIRE DE SAISIE DES EQUIPEMENTS</h2>
+                              <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-mail"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Email Address">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-phone"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Contact Number">
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-mail"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Email Address">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-phone"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Contact Number">
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-mail"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Email Address">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <div class="form-group ic-cmp-int">
+                                      <div class="form-ic-cmp">
+                                          <i class="notika-icon notika-phone"></i>
+                                      </div>
+                                      <div class="nk-int-st">
+                                          <input type="text" class="form-control" placeholder="Contact Number">
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+                             
+                         
+                       
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Save changes</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
       <div style="padding-top: 10px; margin-left: 10px; margin-right: 10px;" class="compose-ml">
-        <b><span>GESTION DES EQUIPEMENTS</span></b>
-        <button class="float-right btn search-ib">
-          <i class="notika-icon notika-app"></i> AJOUTER UN EQUIPEMENT
-        </button>
+        <b><h4>GESTION DES EQUIPEMENTS</h4></b>
       </div> 
       <mat-card>
           <mat-form-field appearance="fill">
-              <mat-label>Recherche...</mat-label>
+              <mat-label color="primary">Recherche...</mat-label>
               <input matInput  #input>
           </mat-form-field>
       </mat-card>
-
+     <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="numero">
                 <th mat-header-cell *matHeaderCellDef>Numéro Serie</th>
@@ -54,11 +176,13 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
         <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
     </table>
-
+    <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons> </mat-paginator>
+  </div>
 </div>
 
-      </div>
-    </div>
-    </div>
+ </div>
 </div>
+</div>
+</div>
+
 <app-footer></app-footer>
