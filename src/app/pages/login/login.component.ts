@@ -33,8 +33,10 @@ login(){
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
       this.ngxService.stop();
+      localStorage.clear()
       localStorage.setItem('token',response.token);
       this.router.navigate(['/darshboard']);
+      console.log(response.token)
     },(error)=>{
       if(error.error?.message){
         this.responseMessage = error.error?.message;
@@ -42,6 +44,7 @@ login(){
         this.responseMessage = GlobalConstants.genericError;
       }
       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+      
     })
   }
 }

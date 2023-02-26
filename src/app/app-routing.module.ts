@@ -7,6 +7,7 @@ import { DetenteurComponent } from './pages/detenteur/detenteur.component';
 import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equipement-detenteur.component';
 import { EquipementComponent } from './pages/equipement/equipement.component';
 import { LoginComponent } from './pages/login/login.component';
+import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { RouteGuardService } from './services/route-guard.service';
 
 const routes: Routes = [
@@ -20,13 +21,21 @@ const routes: Routes = [
   component:EquipementComponent, 
   canActivate:[RouteGuardService],
   data:{
-    expectedRole:['user']
+    expectedRole:['admin']
   }
 
   },
   { path: 'detenteur', component:DetenteurComponent },
   { path: 'detenteur_equipement', component:EquipementDetenteurComponent },
   { path: 'ajout_equipement', component:AddEquipementComponent },
+  { path: 'utilisateur', component:UtilisateurComponent,
+  canActivate:[RouteGuardService],
+  data:{
+    expectedRole:['admin']
+  }
+
+
+  },
 
   // { path: '', component: LoginComponent },
   // {

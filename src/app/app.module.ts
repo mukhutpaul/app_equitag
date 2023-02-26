@@ -24,6 +24,9 @@ import {PdfViewerModule} from 'ng2-pdf-viewer'
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgxUiLoaderConfig, PB_DIRECTION, SPINNER } from 'ngx-ui-loader';
+import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
+import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -50,7 +53,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MenuComponent,
     DetenteurComponent,
     EquipementDetenteurComponent,
-    AddEquipementComponent
+    AddEquipementComponent,
+    ConfirmationComponent,
+    ChangePasswordComponent,
+    UtilisateurComponent
   ],
   imports: [
     BrowserModule,
