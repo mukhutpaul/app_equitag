@@ -33,9 +33,8 @@ login(){
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
       this.ngxService.stop();
-      localStorage.clear()
       localStorage.setItem('token',response.token);
-      this.router.navigate(['/darshboard']);
+      this.router.navigate(['darshboard']);
       console.log(response.token)
     },(error)=>{
       if(error.error?.message){

@@ -21,12 +21,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { AddEquipementComponent } from './pages/add-equipement/add-equipement.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PdfViewerModule} from 'ng2-pdf-viewer'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgxUiLoaderConfig, PB_DIRECTION, SPINNER } from 'ngx-ui-loader';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
+import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -70,7 +71,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [],
+  providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
