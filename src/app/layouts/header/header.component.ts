@@ -33,7 +33,7 @@ swal.fire({
   title: 'Voulez-vous quitter l\'application?',
   showCancelButton: true,
   confirmButtonText: 'Yes',
-  confirmButtonColor: '#3085d6',
+  confirmButtonColor: '#00c292',
   cancelButtonColor: '#d33',
 }).then((result) => {
   /* Read more about isConfirmed, isDenied below */
