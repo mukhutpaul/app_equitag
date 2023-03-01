@@ -28,6 +28,7 @@ import { ConfirmationComponent } from './dialog/confirmation/confirmation.compon
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -57,7 +58,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AddEquipementComponent,
     ConfirmationComponent,
     ChangePasswordComponent,
-    UtilisateurComponent
+    UtilisateurComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

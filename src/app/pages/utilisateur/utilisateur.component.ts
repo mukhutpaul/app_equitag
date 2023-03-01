@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-utilisateur',
@@ -62,7 +63,12 @@ export class UtilisateurComponent implements OnInit{
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
   }
 
-
+  
+  signupAction(){
+    const dialogConfig = new MatDialogConfig();
+    //dialogConfig.width ="450px";
+    this.dialog.open(SignupComponent,dialogConfig);
+  }
 
 
 }

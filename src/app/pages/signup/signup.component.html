@@ -1,0 +1,59 @@
+<div style="width: 800px;">
+
+    
+    <mat-dialog-content class="mat-typography" style="width: 800px;">
+        <mat-toolbar class="prim"  style="width: 800px;">
+            <mat-toolbar-row fxLayout="row">
+                <span class="title-centers">Formulaire de saisie des utilisateurs</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form [formGroup]="signupForm">
+            <div fxFlex fxLayout="column">
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="signupForm.controls.name.touched && signupForm.controls.name.invalid">
+                        <span *ngIf="signupForm.controls.name.errors.required">This field is mandatory</span>
+                        <span *ngIf="signupForm.controls.name.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+    <br>
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid">
+                        <span *ngIf="signupForm.controls.email.errors.required">This field is mandatory</span>
+                        <span *ngIf="signupForm.controls.email.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+    <br>
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName="contactNumber" required>
+                    <mat-error *ngIf="signupForm.controls.contactNumber.touched && signupForm.controls.contactNumber.invalid">
+                        <span *ngIf="signupForm.controls.contactNumber.errors.required">This field is mandatory</span>
+                        <span *ngIf="signupForm.controls.contactNumber.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+    <br>
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                    <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
+                        <span *ngIf="signupForm.controls.password.errors.required">This field is mandatory</span>
+                        <span *ngIf="signupForm.controls.password.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+    
+    
+            </div> 
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+    <button mat-raised-button  style="color: white; background-color:#00c292;" types="submit" (click)="handleSubmit()"
+    [disabled]="!(signupForm.valid && signupForm.dirty)">Save</button>
+    <button mat-raised-button  style="color: white; background-color: red;" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>  
+
+
