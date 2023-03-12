@@ -16,7 +16,6 @@ export class SnackbarService {
         panelClass: ['black-snackbar']
       });
     }
-
     else {
       this.snackbar.open(message, '', {
         horizontalPosition: 'center',

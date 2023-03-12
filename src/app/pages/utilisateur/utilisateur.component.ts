@@ -38,10 +38,10 @@ export class UtilisateurComponent implements OnInit{
   }
 
 
-  tableData(){
-    return this.userService.getUsers().subscribe((response:any)=>{
+  async tableData(){
+    return await this.userService.getUsers().subscribe((response:any)=>{
       console.log(response)
-      this.dataSource = new MatTableDataSource(response);
+      this.dataSource =  new MatTableDataSource(response);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     },(error)=>{
