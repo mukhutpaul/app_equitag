@@ -11,7 +11,7 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
- email:any;
+ username:any;
  password:any;
  responseMessage:any;
 
@@ -27,18 +27,17 @@ export class LoginComponent implements OnInit {
 login(){
   this.ngxService.start();
   var data ={
-      email:this.email,
+      username:this.username,
       password:this.password
     }
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
-      this.ngxService.stop();
       localStorage.setItem('token',response.token);
       this.router.navigate(['darshboard']);
       console.log(response.token)
     },(error)=>{
-      if(error.error?.message){
-        this.responseMessage = error.error?.message;
+      if(error.error?.detail){
+        this.responseMessage = error.error?.detail;
       }else{
         this.responseMessage = GlobalConstants.genericError;
       }

@@ -13,7 +13,7 @@ export class UserService {
 
   signup(data: any) {
     return this.httpClient.post(this.url +
-      "/user/signup", data, {
+      "/api/register", data, {
       headers: new HttpHeaders().set('Content-type',"application/json")
     });
   }
@@ -21,12 +21,12 @@ export class UserService {
   forgotPassword(data:any){
      return this.httpClient.post(this.url+
       "/user/forgotPassword/",data,{
-        headers: new HttpHeaders().set('content-Type',"application/json")
+        headers: new HttpHeaders().set('Content-type',"application/json")
       })
   }
   login(data:any){
     return this.httpClient.post(this.url+
-      "/user/login/",data,{
+      "/api/login/",data,{
         headers: new HttpHeaders().set('Content-type',"application/json")
       })
   }
@@ -43,7 +43,7 @@ export class UserService {
   }
 
   getUsers(){
-    return this.httpClient.get(this.url+ "/user/get/");
+    return this.httpClient.get(this.url+ "/api/users/");
   }
 
   update(data:any){

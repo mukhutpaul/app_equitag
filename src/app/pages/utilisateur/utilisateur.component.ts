@@ -16,10 +16,12 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class UtilisateurComponent implements OnInit{
 
-  displayedColumns:string[]=['name','email','contactNumber','edit'];;
+  displayedColumns:string[]=['username','first_name','last_name','edit'];;
   dataSource:any;
   responseMessage:any;
-
+  total:any;
+  
+ 
   @ViewChild(MatPaginator) paginator: MatPaginator  = <MatPaginator>{};
   @ViewChild(MatSort) sort: MatSort  = <MatSort>{};
 
@@ -38,10 +40,11 @@ export class UtilisateurComponent implements OnInit{
   }
 
 
-  async tableData(){
-    return await this.userService.getUsers().subscribe((response:any)=>{
+ tableData(){
+    return this.userService.getUsers().subscribe((response:any)=>{
       console.log(response)
-      this.dataSource =  new MatTableDataSource(response);
+      this.dataSource =  new MatTableDataSource(response?.data);
+      this.total = response?.total;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     },(error)=>{
@@ -69,6 +72,49 @@ export class UtilisateurComponent implements OnInit{
     //dialogConfig.width ="450px";
     this.dialog.open(SignupComponent,dialogConfig);
   }
+
+  handleAddAction(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      action:"Add"
+    }
+   // dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(SignupComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+      
+    });
+
+    const sub = dialogRef.componentInstance.onAddUser.subscribe((response)=>{
+          this.tableData();
+    })
+
+  }
+
+  handleEditAction(values:any){
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      action:"Edit",
+      data:values
+    }
+    //dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(SignupComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+
+    const sub = dialogRef.componentInstance.onEditUser.subscribe((response)=>{
+         this.tableData();
+    })
+
+  }
+
+
+
+
 
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -14,6 +14,10 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
 })
 export class SignupComponent implements OnInit{
   signupForm: any = FormGroup;
+  onAddUser = new EventEmitter();
+  onEditUser = new EventEmitter();
+  dialogAction:any ="Add";
+  action:any ="Add";
   responseMessage:any;
 
   constructor(private formBuilder:FormBuilder,

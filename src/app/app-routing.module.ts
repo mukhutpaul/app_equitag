@@ -19,20 +19,20 @@ const routes: Routes = [
   { 
   path: 'equipement', 
   component:EquipementComponent, 
-  canActivate:[RouteGuardService],
-  data:{
-    expectedRole:['admin']
-  }
+ // canActivate:[RouteGuardService],
+  // data:{
+  //   //expectedRole:['admin']
+  // }
 
   },
   { path: 'detenteur', component:DetenteurComponent },
   { path: 'detenteur_equipement', component:EquipementDetenteurComponent },
   { path: 'ajout_equipement', component:AddEquipementComponent },
   { path: 'utilisateur', component:UtilisateurComponent,
-  canActivate:[RouteGuardService],
-  data:{
-    expectedRole:['admin']
-  }
+  //canActivate:[RouteGuardService],
+  // data:{
+  //   //expectedRole:['admin']
+  // }
 
 
   },
