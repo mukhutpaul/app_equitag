@@ -5,15 +5,15 @@ import { environment } from '../environment/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UniteService {
 
   constructor(private httpClient: HttpClient) { }
 
   url = environment.apiUrl;
 
-  signup(data: any) {
+  addUnite(data: any) {
     return this.httpClient.post(this.url +
-      "/api/register/", data, {
+      "/api/holder/unites/", data, {
       headers: new HttpHeaders().set('Content-type',"application/json")
     });
   }
@@ -42,19 +42,19 @@ export class UserService {
       })
   }
 
-  getUsers(){
-    return this.httpClient.get(this.url+ "/api/users/");
+  getUnites(){
+    return this.httpClient.get(this.url+ "/api/holder/unites/");
   }
 
   update(id:any,data:any){
-    return this.httpClient.patch(this.url+"/api/users/"+id,data,{
+    return this.httpClient.patch(this.url+"/api/holder/unites/"+id,data,{
       headers: new HttpHeaders().set('Content-type',"application/json")
 
     })
   }
 
   delete(id:any){
-    return this.httpClient.delete(this.url+"/api/users/"+id,{
+    return this.httpClient.delete(this.url+"/api/holder/unites/"+id,{
       headers: new HttpHeaders().set('Content-type',"application/json")
 
     })

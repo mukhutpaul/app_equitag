@@ -13,8 +13,8 @@
                     <div class="modals-default-cl">
                         <div style="padding-top: 10px;">
                             <button type="button" class="btn btn-info float-right" data-toggle="modal"
-                                data-target="#myModalthre" (click)="signupAction()"><i
-                                    class="notika-icon notika-app"></i> Nouvel utilisateur</button>
+                                data-target="#myModalthre" (click)="handleAddAction()"><i
+                                    class="notika-icon notika-app"></i> Nouvelle Unité</button>
                         </div>
 
                         <div class="modal fade" id="myModalthree" role="dialog">
@@ -146,7 +146,7 @@
 
                         <div style="padding-top: 10px; margin-left: 10px; margin-right: 10px;" class="compose-ml">
                             <b>
-                                <h4><strong>GESTION DES UTILISATEURS</strong> </h4>
+                                <h4><strong>GESTION DES UNITES</strong> </h4>
                             </b>
                         </div>
                         <div>
@@ -157,24 +157,17 @@
                                 </mat-form-field>
 
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                                    <ng-container matColumnDef="username">
+                                    <ng-container matColumnDef="name">
                                         <th mat-header-cell *matHeaderCellDef>Name</th>
-                                        <td mat-cell *matCellDef="let element">{{element.username}}</td>
+                                        <td mat-cell *matCellDef="let element">{{element.name}}</td>
 
                                     </ng-container>
-                                    <ng-container matColumnDef="first_name">
-                                        <th mat-header-cell *matHeaderCellDef>First Name</th>
-                                        <td mat-cell *matCellDef="let element">{{element.first_name}}</td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="last_name">
-                                        <th mat-header-cell *matHeaderCellDef>Last Name</th>
-                                        <td mat-cell *matCellDef="let element">{{element.last_name}}</td>
-                                    </ng-container>
+                                 
 
-                                    <ng-container matColumnDef="password">
+                                    <!-- <ng-container matColumnDef="password">
                                         <th mat-header-cell *matHeaderCellDef>Password</th>
                                         <td mat-cell *matCellDef="let element">{{element.password}}</td>
-                                    </ng-container>
+                                    </ng-container> -->
 
                                     <ng-container matColumnDef="edit">
                                         <th mat-header-cell *matHeaderCellDef>Action</th>
@@ -194,8 +187,8 @@
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
                                     <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
                                 </table>
-                                <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons> </mat-paginator>
-                                <p>Total : {{total}} </p>
+                                <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons style="color:#00c292;"> </mat-paginator>
+                                <p>Total : {{total}} Unités</p>
                             </mat-card>
 
 

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { UniteComponent } from './dialog/unite/unite.component';
 import { AddEquipementComponent } from './pages/add-equipement/add-equipement.component';
 import { DarshboardComponent } from './pages/darshboard/darshboard.component';
 import { DetenteurComponent } from './pages/detenteur/detenteur.component';
 import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equipement-detenteur.component';
 import { EquipementComponent } from './pages/equipement/equipement.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ManageUniteComponent } from './pages/manage-unite/manage-unite.component';
 import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { RouteGuardService } from './services/route-guard.service';
 
@@ -19,6 +21,15 @@ const routes: Routes = [
   { 
   path: 'equipement', 
   component:EquipementComponent, 
+ // canActivate:[RouteGuardService],
+  // data:{
+  //   //expectedRole:['admin']
+  // }
+
+  },
+  {
+  path: 'unites', 
+  component:ManageUniteComponent, 
  // canActivate:[RouteGuardService],
   // data:{
   //   //expectedRole:['admin']

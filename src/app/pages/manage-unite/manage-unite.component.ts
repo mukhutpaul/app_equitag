@@ -1,23 +1,24 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
+import { UniteComponent } from 'src/app/dialog/unite/unite.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { UniteService } from 'src/app/services/unite.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
-import { SignupComponent } from '../signup/signup.component';
 
 @Component({
-  selector: 'app-utilisateur',
-  templateUrl: './utilisateur.component.html',
-  styleUrls: ['./utilisateur.component.scss']
+  selector: 'app-manage-unite',
+  templateUrl: './manage-unite.component.html',
+  styleUrls: ['./manage-unite.component.scss']
 })
-export class UtilisateurComponent implements OnInit{
+export class ManageUniteComponent implements OnInit{
 
-  displayedColumns:string[]=['username','first_name','last_name','edit'];;
+  displayedColumns:string[]=['name','edit'];;
   dataSource:any;
   responseMessage:any;
   total:any;
@@ -31,7 +32,7 @@ export class UtilisateurComponent implements OnInit{
     private dialog:MatDialog,
     private snackbarService:SnackbarService,
     private router:Router,
-    private userService:UserService,
+    private uniteService:UniteService,
     ) { }
 
 
@@ -42,7 +43,7 @@ export class UtilisateurComponent implements OnInit{
 
 
  async tableData(){
-    return await this.userService.getUsers().subscribe((response:any)=>{
+    return await this.uniteService.getUnites().subscribe((response:any)=>{
       console.log(response)
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
@@ -74,24 +75,26 @@ export class UtilisateurComponent implements OnInit{
   //   this.dialog.open(SignupComponent,dialogConfig);
   // }
 
-  signupAction(){
+  handleAddAction(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data={
       action:"Ajout"
     }
    // dialogConfig.width="850px";
-    const dialogRef = this.dialog.open(SignupComponent,dialogConfig);
+    const dialogRef = this.dialog.open(UniteComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{
       dialogRef.close();
       
     });
 
-    const sub = dialogRef.componentInstance.onAddUser.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onAddUnite.subscribe((response)=>{
           this.tableData();
     })
 
   }
+
+
 
   handleEditAction(values:any){
 
@@ -101,13 +104,13 @@ export class UtilisateurComponent implements OnInit{
       data:values
     }
     //dialogConfig.width="850px";
-    const dialogRef = this.dialog.open(SignupComponent,dialogConfig);
+    const dialogRef = this.dialog.open(UniteComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{
       dialogRef.close();
     });
 
-    const sub = dialogRef.componentInstance.onEditUser.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onEditUnite.subscribe((response)=>{
          this.tableData();
     })
 
@@ -117,7 +120,7 @@ export class UtilisateurComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data ={
-      message:'delete '+value.username
+      message:'delete '+value.name
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response:any)=>{
@@ -128,7 +131,7 @@ export class UtilisateurComponent implements OnInit{
   }
   
   deleteUser(id:any){
-    this.userService.delete(id).subscribe((response:any)=>{
+    this.uniteService.delete(id).subscribe((response:any)=>{
       this.responseMessage = "Utilisateur supprimé!";
       this.tableData();
       this.snackbarService.openSnackBar(this.responseMessage,"success");
