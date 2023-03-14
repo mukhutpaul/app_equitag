@@ -1,1 +1,29 @@
-<p>province works!</p>
+<div style="width: 800px;">
+
+    <mat-dialog-content class="mat-typography" style="width: 800px;">
+        <mat-toolbar class="prim" style="width: 800px;">
+            <mat-toolbar-row fxLayout="row">
+                <span class="title-centers">{{dialogData.action}} Province </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form [formGroup]="prForm">
+            <div fxFlex fxLayout="column">
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Nom Province </mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="prForm.controls.name.touched && prForm.controls.name.invalid">
+                        <span *ngIf="prForm.controls.name.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button style="color: white; background-color:#00c292;" types="submit"
+            (click)="handleSubmit()" [disabled]="!(prForm.valid && prForm.dirty)">Save</button>
+        <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>
+
+
+

@@ -4,32 +4,29 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { CategorieComponent } from 'src/app/dialog/categorie/categorie.component';
+import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
-import { ProvinceComponent } from 'src/app/dialog/province/province.component';
-import { TagComponent } from 'src/app/dialog/tag/tag.component';
-import { TypeComponent } from 'src/app/dialog/type/type.component';
+import { EquipementsComponent } from 'src/app/dialog/equipements/equipements.component';
 import { UniteComponent } from 'src/app/dialog/unite/unite.component';
-import { CategorieService } from 'src/app/services/categorie.service';
-import { ProvinceService } from 'src/app/services/province.service';
+import { BataillonService } from 'src/app/services/bataillon.service';
+import { EquipementService } from 'src/app/services/equipement.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { TagService } from 'src/app/services/tag.service';
-import { TypeService } from 'src/app/services/type.service';
 import { UniteService } from 'src/app/services/unite.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
-  selector: 'app-manage-province',
-  templateUrl: './manage-province.component.html',
-  styleUrls: ['./manage-province.component.scss']
+  selector: 'app-manage-equipement',
+  templateUrl: './manage-equipement.component.html',
+  styleUrls: ['./manage-equipement.component.scss']
 })
-export class ManageProvinceComponent implements OnInit{
+export class ManageEquipementComponent implements OnInit{
 
-  displayedColumns:string[]=['name','edit'];;
+  displayedColumns:string[]=['name','numero_serie','date_fabrication','type','edit'];;
   dataSource:any;
   responseMessage:any;
   total:any;
+  unites:any=[];
   
  
   @ViewChild(MatPaginator) paginator: MatPaginator  = <MatPaginator>{};
@@ -40,7 +37,8 @@ export class ManageProvinceComponent implements OnInit{
     private dialog:MatDialog,
     private snackbarService:SnackbarService,
     private router:Router,
-    private prService:ProvinceService,
+    private eqService:EquipementService,
+    private uniteService: UniteService
     ) { }
 
 
@@ -51,7 +49,7 @@ export class ManageProvinceComponent implements OnInit{
 
 
  async tableData(){
-    return await this.prService.getProvinces().subscribe((response:any)=>{
+    return await this.eqService.getEquipements().subscribe((response:any)=>{
       console.log(response)
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
@@ -60,7 +58,7 @@ export class ManageProvinceComponent implements OnInit{
     },(error)=>{
    
       if(error.error?.message){
-        this.responseMessage = error.error?.message;
+        this.responseMessage = error.error?.Message;
       }
       else{
         this.responseMessage = GlobalConstants.genericError;
@@ -89,14 +87,14 @@ export class ManageProvinceComponent implements OnInit{
       action:"Ajout"
     }
    // dialogConfig.width="850px";
-    const dialogRef = this.dialog.open(ProvinceComponent,dialogConfig);
+    const dialogRef = this.dialog.open(EquipementsComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{
       dialogRef.close();
       
     });
 
-    const sub = dialogRef.componentInstance.onAddPr.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onAddeq.subscribe((response)=>{
           this.tableData();
     })
 
@@ -112,13 +110,13 @@ export class ManageProvinceComponent implements OnInit{
       data:values
     }
     //dialogConfig.width="850px";
-    const dialogRef = this.dialog.open(ProvinceComponent,dialogConfig);
+    const dialogRef = this.dialog.open(EquipementsComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{
       dialogRef.close();
     });
 
-    const sub = dialogRef.componentInstance.onEditPr.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onEditeq.subscribe((response)=>{
          this.tableData();
     })
 
@@ -132,15 +130,15 @@ export class ManageProvinceComponent implements OnInit{
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response:any)=>{
-      this.deletePr(value.id);
+      this.deleteq(value.id);
       dialogRef.close();
     })
 
   }
   
-  deletePr(id:any){
-    this.prService.delete(id).subscribe((response:any)=>{
-      this.responseMessage = "Province supprimée!";
+  deleteq(id:any){
+    this.eqService.delete(id).subscribe((response:any)=>{
+      this.responseMessage = "Equipement supprimé!";
       this.tableData();
       this.snackbarService.openSnackBar(this.responseMessage,"success");
    },(error:any)=>{ 
@@ -156,11 +154,6 @@ export class ManageProvinceComponent implements OnInit{
 
 
 
-
-
-
 }
-
-
 
 

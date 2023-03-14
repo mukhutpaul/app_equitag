@@ -6,11 +6,12 @@ import { AddEquipementComponent } from './pages/add-equipement/add-equipement.co
 import { DarshboardComponent } from './pages/darshboard/darshboard.component';
 import { DetenteurComponent } from './pages/detenteur/detenteur.component';
 import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equipement-detenteur.component';
-import { EquipementComponent } from './pages/equipement/equipement.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ManageBataillonComponent } from './pages/manage-bataillon/manage-bataillon.component';
 import { ManageCategorieComponent } from './pages/manage-categorie/manage-categorie.component';
+import { ManageEquipementComponent } from './pages/manage-equipement/manage-equipement.component';
 import { ManageGradeComponent } from './pages/manage-grade/manage-grade.component';
+import { ManageProvinceComponent } from './pages/manage-province/manage-province.component';
 import { ManageTagComponent } from './pages/manage-tag/manage-tag.component';
 import { ManageTypeComponent } from './pages/manage-type/manage-type.component';
 import { ManageUniteComponent } from './pages/manage-unite/manage-unite.component';
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   { 
   path: 'equipement', 
-  component:EquipementComponent, 
+  component:ManageEquipementComponent, 
  // canActivate:[RouteGuardService],
   // data:{
   //   //expectedRole:['admin']
@@ -41,6 +42,15 @@ const routes: Routes = [
     // }
   
     },
+    { 
+      path: 'provinces', 
+      component:ManageProvinceComponent, 
+     // canActivate:[RouteGuardService],
+      // data:{
+      //   //expectedRole:['admin']
+      // }
+    
+      },
   {
   path: 'unites', 
   component:ManageUniteComponent, 

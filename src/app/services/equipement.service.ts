@@ -5,15 +5,15 @@ import { environment } from '../environment/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProvinceService {
+export class EquipementService {
 
   constructor(private httpClient: HttpClient) { }
 
   url = environment.apiUrl;
 
-  addPr(data: any) {
+  addEq(data: any) {
     return this.httpClient.post(this.url +
-      "/api/holder/provinces/", data, {
+      "/api/equipment/equipments/", data, {
       headers: new HttpHeaders().set('Content-type',"application/json")
     });
   }
@@ -42,19 +42,19 @@ export class ProvinceService {
       })
   }
 
-  getProvinces(){
-    return this.httpClient.get(this.url+ "/api/holder/provinces/");
+  getEquipements(){
+    return this.httpClient.get(this.url+ "/api/equipment/equipments/");
   }
 
   update(id:any,data:any){
-    return this.httpClient.patch(this.url+"/api/holder/provinces/"+id,data,{
+    return this.httpClient.patch(this.url+"/api/equipment/equipments/"+id,data,{
       headers: new HttpHeaders().set('Content-type',"application/json")
 
     })
   }
 
   delete(id:any){
-    return this.httpClient.delete(this.url+"/api/holder/provinces/"+id,{
+    return this.httpClient.delete(this.url+"/api/equipment/equipments/"+id,{
       headers: new HttpHeaders().set('Content-type',"application/json")
 
     })

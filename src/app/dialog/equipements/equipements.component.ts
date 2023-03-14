@@ -1,45 +1,52 @@
+
 import { Component, EventEmitter,OnInit,Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { CategorieService } from 'src/app/services/categorie.service';
-import { GradeService } from 'src/app/services/grade.service';
-import { ProvinceService } from 'src/app/services/province.service';
+import { BataillonService } from 'src/app/services/bataillon.service';
+import { EquipementService } from 'src/app/services/equipement.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TypeService } from 'src/app/services/type.service';
 import { UniteService } from 'src/app/services/unite.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
-  selector: 'app-province',
-  templateUrl: './province.component.html',
-  styleUrls: ['./province.component.scss']
+  selector: 'app-equipements',
+  templateUrl: './equipements.component.html',
+  styleUrls: ['./equipements.component.scss']
 })
-export class ProvinceComponent implements OnInit{
-  prForm: any = FormGroup;
-  onAddPr = new EventEmitter();
-  onEditPr = new EventEmitter();
+export class EquipementsComponent implements OnInit{
+  eqForm: any = FormGroup;
+  onAddeq = new EventEmitter();
+  onEditeq = new EventEmitter();
   dialogAction:any ="Ajout";
   action:any ="Ajout"; 
   responseMessage:any;
+  types:any=[];
    
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
-      private router:Router, private prService:ProvinceService,
+      private router:Router, private eqServ:EquipementService,private typeService:TypeService,
       private snackbarService:SnackbarService,
-      private dialogRef:MatDialogRef<ProvinceComponent>,
+      private dialogRef:MatDialogRef<EquipementsComponent>,
       private ngxService:NgxUiLoaderService) { }
   
     ngOnInit(): void {
-      this.prForm = this.formBuilder.group({
-        name:[null,[Validators.required]]
+      
+      this.eqForm = this.formBuilder.group({
+        name:[null,[Validators.required]],
+        numero_serie:[null,[Validators.required]],
+        date_fabrication:[null,[Validators.required]],
+        typeId:[null,[Validators.required]],
       });
       if(this.dialogData.action === "Modification"){
         this.dialogAction = "Modification";
         this.action = "Update";
-        this.prForm.patchValue(this.dialogData.data);
+        this.eqForm.patchValue(this.dialogData.data);
       }
+      this.getTypes();
+     
     }
   
     // handleSubmit(){
@@ -82,16 +89,19 @@ export class ProvinceComponent implements OnInit{
     }
   
    add(){
-      var formData = this.prForm.value;
+      var formData = this.eqForm.value;
       var data ={
         name: formData.name,
+        numero_serie: formData.numero_serie,
+        date_fabrication: formData.date_fabrication,
+        type: formData.typeId
     
       }
       console.log(data);
-      this.prService.addPr(data).subscribe((response:any)=>{
+      this.eqServ.addEq(data).subscribe((response:any)=>{
          this.dialogRef.close();
-         this.onAddPr.emit();
-         this.responseMessage = "Province enregistrée!";
+         this.onAddeq.emit();
+         this.responseMessage = "Equipement enregistrée!";
          this.snackbarService.openSnackBar(this.responseMessage,"success");
       },(error:any)=>{
         this.dialogRef.close();
@@ -104,16 +114,19 @@ export class ProvinceComponent implements OnInit{
     }
   
     edit(){
-      var formData = this.prForm.value;
+      var formData = this.eqForm.value;
       var data ={
-        name: formData.name
+        name: formData.name,
+        numero_serie: formData.name,
+        date_fabrication: formData.name,
+        unite: formData.typeId
       }
       console.log(this.dialogData.data.id);
-      this.prService.update(this.dialogData.data.id,data).subscribe((response:any)=>{
+      this.eqForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{
         console.log(response);
          this.dialogRef.close();
-         this.onEditPr.emit();
-         this.responseMessage = "Province mise à jour";
+         this.onEditeq.emit();
+         this.responseMessage = "Equiepement mis à jour";
          this.snackbarService.openSnackBar(this.responseMessage,"success");
       },(error:any)=>{
         this.dialogRef.close();
@@ -124,11 +137,24 @@ export class ProvinceComponent implements OnInit{
         this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
       })
     }
+
+    getTypes(){
+      this.typeService.getTypes().subscribe((response:any)=>{
+        this.types = response?.data;
+        
+     },(error:any)=>{
+       this.dialogRef.close();
+       if(error.error?.message){
+         this.responseMessage = error.error?.message;
+  
+       }
+       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+     })
+  
+    }
   
   
   }
   
-
-
 
 

@@ -8,7 +8,6 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { MobileComponent } from './layouts/mobile/mobile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DarshboardComponent } from './pages/darshboard/darshboard.component';
-import { EquipementComponent } from './pages/equipement/equipement.component';
 import { MenuComponent } from './layouts/menu/menu.component';
 import { DetenteurComponent } from './pages/detenteur/detenteur.component';
 import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equipement-detenteur.component';
@@ -44,6 +43,8 @@ import { ManageGradeComponent } from './pages/manage-grade/manage-grade.componen
 import { GradeComponent } from './dialog/grade/grade.component';
 import { ProvinceComponent } from './dialog/province/province.component';
 import { ManageProvinceComponent } from './pages/manage-province/manage-province.component';
+import { ManageEquipementComponent } from './pages/manage-equipement/manage-equipement.component';
+import { EquipementsComponent } from './dialog/equipements/equipements.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -66,7 +67,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MobileComponent,
     LoginComponent,
     DarshboardComponent,
-    EquipementComponent,
     MenuComponent,
     DetenteurComponent,
     EquipementDetenteurComponent,
@@ -88,7 +88,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ManageGradeComponent,
     GradeComponent,
     ProvinceComponent,
-    ManageProvinceComponent
+    ManageProvinceComponent,
+    ManageEquipementComponent,
+    EquipementsComponent
   ],
   imports: [
     BrowserModule,
