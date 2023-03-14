@@ -8,6 +8,11 @@ import { DetenteurComponent } from './pages/detenteur/detenteur.component';
 import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equipement-detenteur.component';
 import { EquipementComponent } from './pages/equipement/equipement.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ManageBataillonComponent } from './pages/manage-bataillon/manage-bataillon.component';
+import { ManageCategorieComponent } from './pages/manage-categorie/manage-categorie.component';
+import { ManageGradeComponent } from './pages/manage-grade/manage-grade.component';
+import { ManageTagComponent } from './pages/manage-tag/manage-tag.component';
+import { ManageTypeComponent } from './pages/manage-type/manage-type.component';
 import { ManageUniteComponent } from './pages/manage-unite/manage-unite.component';
 import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { RouteGuardService } from './services/route-guard.service';
@@ -27,6 +32,15 @@ const routes: Routes = [
   // }
 
   },
+  { 
+    path: 'grades', 
+    component:ManageGradeComponent, 
+   // canActivate:[RouteGuardService],
+    // data:{
+    //   //expectedRole:['admin']
+    // }
+  
+    },
   {
   path: 'unites', 
   component:ManageUniteComponent, 
@@ -36,6 +50,42 @@ const routes: Routes = [
   // }
 
   },
+  {
+  path: 'bataillons', 
+  component:ManageBataillonComponent, 
+ // canActivate:[RouteGuardService],
+  // data:{
+  //   //expectedRole:['admin']
+  // }
+
+  },
+  {
+  path: 'tags', 
+  component:ManageTagComponent, 
+ // canActivate:[RouteGuardService],
+  // data:{
+  //   //expectedRole:['admin']
+  // }
+
+  },
+  {
+    path: 'categories', 
+    component:ManageCategorieComponent, 
+   // canActivate:[RouteGuardService],
+    // data:{
+    //   //expectedRole:['admin']
+    // }
+  
+    },
+    {
+      path: 'types', 
+      component:ManageTypeComponent, 
+     // canActivate:[RouteGuardService],
+      // data:{
+      //   //expectedRole:['admin']
+      // }
+    
+    },
   { path: 'detenteur', component:DetenteurComponent },
   { path: 'detenteur_equipement', component:EquipementDetenteurComponent },
   { path: 'ajout_equipement', component:AddEquipementComponent },

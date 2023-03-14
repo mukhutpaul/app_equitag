@@ -3,16 +3,16 @@
     <mat-dialog-content class="mat-typography" style="width: 800px;">
         <mat-toolbar class="prim" style="width: 800px;">
             <mat-toolbar-row fxLayout="row">
-                <span class="title-centers">{{dialogData.action}} Unité </span>
+                <span class="title-centers">{{dialogData.action}} Tag </span>
             </mat-toolbar-row>
         </mat-toolbar>
-        <form [formGroup]="uniteForm">
+        <form [formGroup]="tagForm">
             <div fxFlex fxLayout="column">
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
-                    <mat-label>Nom Unite</mat-label>
+                    <mat-label>Nom Type</mat-label>
                     <input matInput formControlName="name" required>
-                    <mat-error *ngIf="uniteForm.controls.name.touched && uniteForm.controls.name.invalid">
-                        <span *ngIf="uniteForm.controls.name.errors.required">This field is mandatory</span>
+                    <mat-error *ngIf="tagForm.controls.name.touched && tagForm.controls.name.invalid">
+                        <span *ngIf="tagForm.controls.name.errors.required">This field is mandatory</span>
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -20,7 +20,10 @@
     </mat-dialog-content>
     <mat-dialog-actions align="center">
         <button mat-raised-button style="color: white; background-color:#00c292;" types="submit"
-            (click)="handleSubmit()" [disabled]="!(uniteForm.valid && uniteForm.dirty)">Save</button>
+            (click)="handleSubmit()" [disabled]="!(tagForm.valid && tagForm.dirty)">Save</button>
         <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
     </mat-dialog-actions>
 </div>
+
+
+

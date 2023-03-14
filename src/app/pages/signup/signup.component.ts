@@ -86,7 +86,8 @@ export class SignupComponent implements OnInit{
       username: formData.username,
       first_name: formData.first_name,
       last_name: formData.last_name,
-      password: formData.password
+      password: formData.password,
+      is_active: 1
     }
     console.log(data);
     this.userService.signup(data).subscribe((response:any)=>{
@@ -111,7 +112,7 @@ export class SignupComponent implements OnInit{
       username: formData.username,
       first_name: formData.first_name,
       last_name: formData.last_name,
-      password: formData.password
+      is_active: 1
     }
     console.log(data);
     this.userService.update(this.dialogData.data.id,data).subscribe((response:any)=>{

@@ -31,6 +31,19 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
 import { SignupComponent } from './pages/signup/signup.component';
 import { ManageUniteComponent } from './pages/manage-unite/manage-unite.component';
 import { UniteComponent } from './dialog/unite/unite.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ManageBataillonComponent } from './pages/manage-bataillon/manage-bataillon.component';
+import { BataillonComponent } from './dialog/bataillon/bataillon.component';
+import { ManageCategorieComponent } from './pages/manage-categorie/manage-categorie.component';
+import { ManageTypeComponent } from './pages/manage-type/manage-type.component';
+import { CategorieComponent } from './dialog/categorie/categorie.component';
+import { TypeComponent } from './dialog/type/type.component';
+import { TagComponent } from './dialog/tag/tag.component';
+import { ManageTagComponent } from './pages/manage-tag/manage-tag.component';
+import { ManageGradeComponent } from './pages/manage-grade/manage-grade.component';
+import { GradeComponent } from './dialog/grade/grade.component';
+import { ProvinceComponent } from './dialog/province/province.component';
+import { ManageProvinceComponent } from './pages/manage-province/manage-province.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -63,7 +76,19 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     UtilisateurComponent,
     SignupComponent,
     ManageUniteComponent,
-    UniteComponent
+    UniteComponent,
+    ManageBataillonComponent,
+    BataillonComponent,
+    ManageCategorieComponent,
+    ManageTypeComponent,
+    CategorieComponent,
+    TypeComponent,
+    TagComponent,
+    ManageTagComponent,
+    ManageGradeComponent,
+    GradeComponent,
+    ProvinceComponent,
+    ManageProvinceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div style="width: 800px;">
+
+
+    <mat-dialog-content class="mat-typography" style="width: 800px;">
+        <mat-toolbar class="prim" style="width: 800px;">
+            <mat-toolbar-row fxLayout="row">
+                <span class="title-centers">{{dialogData.action}} Bataillon </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form [formGroup]="bataillonForm">
+            <div fxFlex fxLayout="column">
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Nom Bataillon</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="bataillonForm.controls.name.touched && bataillonForm.controls.name.invalid">
+                        <span *ngIf="bataillonForm.controls.name.errors.required">This field is mandatory</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Unité</mat-label>
+                    <mat-select formControlName="uniteId">
+                        <mat-option *ngFor="let unite of unites" [value]="unite.id">
+                            {{unite.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button style="color: white; background-color:#00c292;" types="submit"
+            (click)="handleSubmit()" [disabled]="!(bataillonForm.valid && bataillonForm.dirty)">Save</button>
+        <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>
+
