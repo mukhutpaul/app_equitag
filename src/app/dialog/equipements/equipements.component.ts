@@ -121,7 +121,7 @@ export class EquipementsComponent implements OnInit{
         date_fabrication: formData.name,
         unite: formData.typeId
       }
-      console.log(this.dialogData.data.id);
+     
       this.eqForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{
         console.log(response);
          this.dialogRef.close();

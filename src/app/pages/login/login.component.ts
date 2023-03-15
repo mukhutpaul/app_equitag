@@ -34,7 +34,7 @@ login(){
     this.userService.login(data).subscribe((response:any)=>{
       localStorage.setItem('token',response.token);
       this.router.navigate(['darshboard']);
-      console.log(response.token)
+      console.log(response.data)
     },(error)=>{
       if(error.error?.detail){
         this.responseMessage = error.error?.detail;

@@ -22,16 +22,16 @@
                         <span *ngIf="eqForm.controls.numero_serie.errors.required">This field is mandatory</span>
                     </mat-error>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
-                    <mat-label>Date Fabrication</mat-label>
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 300px;">
+                    <mat-label>Date Fabrication yyyy-mm-dd</mat-label>
                     <input matInput formControlName="date_fabrication" required>
                     <mat-error
                         *ngIf="eqForm.controls.date_fabrication.touched && eqForm.controls.date_fabrication.invalid">
                         <span *ngIf="eqForm.controls.date_fabrication.errors.required">This field is mandatory</span>
                     </mat-error>
-                </mat-form-field> -->
+                </mat-form-field>
 
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Date Fabrication</mat-label>
                     <input matInput [matDatepicker]="picker" formControlName="date_fabrication" required>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -40,7 +40,7 @@
                     *ngIf="eqForm.controls.date_fabrication.touched && eqForm.controls.date_fabrication.invalid">
                     <span *ngIf="eqForm.controls.date_fabrication.errors.required">This field is mandatory</span>
                   </mat-error>
-                  </mat-form-field>
+                  </mat-form-field> -->
 
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Type Equipemen</mat-label>
