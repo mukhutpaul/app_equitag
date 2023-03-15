@@ -37,7 +37,7 @@ export class EquipementsComponent implements OnInit{
       this.eqForm = this.formBuilder.group({
         name:[null,[Validators.required]],
         numero_serie:[null,[Validators.required]],
-        date_fabrication:[null,[Validators.required]],
+        date_fabrication:[null,[Validators.required,Validators.pattern(GlobalConstants.dateRegex)]],
         typeId:[null,[Validators.required]],
       });
       if(this.dialogData.action === "Modification"){

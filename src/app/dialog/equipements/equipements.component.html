@@ -12,14 +12,14 @@
                     <mat-label>Nom Equipement</mat-label>
                     <input matInput formControlName="name" required>
                     <mat-error *ngIf="eqForm.controls.name.touched && eqForm.controls.name.invalid">
-                        <span *ngIf="eqForm.controls.name.errors.required">This field is mandatory</span>
+                        <span *ngIf="eqForm.controls.name.errors.required">Champ Obligatoire</span>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Numéro Serie</mat-label>
                     <input matInput formControlName="numero_serie" required>
                     <mat-error *ngIf="eqForm.controls.numero_serie.touched && eqForm.controls.numero_serie.invalid">
-                        <span *ngIf="eqForm.controls.numero_serie.errors.required">This field is mandatory</span>
+                        <span *ngIf="eqForm.controls.numero_serie.errors.required">Champ Obligatoire</span>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 300px;">
@@ -27,7 +27,8 @@
                     <input matInput formControlName="date_fabrication" required>
                     <mat-error
                         *ngIf="eqForm.controls.date_fabrication.touched && eqForm.controls.date_fabrication.invalid">
-                        <span *ngIf="eqForm.controls.date_fabrication.errors.required">This field is mandatory</span>
+                        <span *ngIf="eqForm.controls.date_fabrication.errors.required">Champ Obligatoire</span>
+                        <span *ngIf="eqForm.controls.date_fabrication.errors.pattern">Le format de la date est invalide respectez le format</span>
                     </mat-error>
                 </mat-form-field>
 
