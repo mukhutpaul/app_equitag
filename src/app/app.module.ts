@@ -45,6 +45,8 @@ import { ProvinceComponent } from './dialog/province/province.component';
 import { ManageProvinceComponent } from './pages/manage-province/manage-province.component';
 import { ManageEquipementComponent } from './pages/manage-equipement/manage-equipement.component';
 import { EquipementsComponent } from './dialog/equipements/equipements.component';
+import { ManageEquipementagsComponent } from './pages/manage-equipementags/manage-equipementags.component';
+import { EquipementagsComponent } from './dialog/equipementags/equipementags.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -90,7 +92,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ProvinceComponent,
     ManageProvinceComponent,
     ManageEquipementComponent,
-    EquipementsComponent
+    EquipementsComponent,
+    ManageEquipementagsComponent,
+    EquipementagsComponent
   ],
   imports: [
     BrowserModule,

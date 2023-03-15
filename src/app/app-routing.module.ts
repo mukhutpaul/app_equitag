@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ManageBataillonComponent } from './pages/manage-bataillon/manage-bataillon.component';
 import { ManageCategorieComponent } from './pages/manage-categorie/manage-categorie.component';
 import { ManageEquipementComponent } from './pages/manage-equipement/manage-equipement.component';
+import { ManageEquipementagsComponent } from './pages/manage-equipementags/manage-equipementags.component';
 import { ManageGradeComponent } from './pages/manage-grade/manage-grade.component';
 import { ManageProvinceComponent } from './pages/manage-province/manage-province.component';
 import { ManageTagComponent } from './pages/manage-tag/manage-tag.component';
@@ -69,6 +70,15 @@ const routes: Routes = [
   // }
 
   },
+  {
+    path: 'equipementags', 
+    component:ManageEquipementagsComponent, 
+   // canActivate:[RouteGuardService],
+    // data:{
+    //   //expectedRole:['admin']
+    // }
+  
+    },
   {
   path: 'tags', 
   component:ManageTagComponent, 
