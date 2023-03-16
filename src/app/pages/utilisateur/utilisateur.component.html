@@ -187,8 +187,16 @@
                                             (click)="handleDeleteAction(element)">
                                            <i class="notika-icon notika-trash"></i>
                                            </button>
-
                                         </td>
+                                           <td mat-cell *matCellDef="let element" class="action-link">
+               
+                                            <mat-slide-toggle (change)="handeleChangeAction($event.checked,element.id)"
+                                                matTooltip="Activate or desactive user" [checked]="element.status">
+                            
+                                            </mat-slide-toggle>
+                                          </td>
+
+                                       
 
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>

@@ -143,6 +143,24 @@ export class UtilisateurComponent implements OnInit{
    })
   }
 
+  handeleChangeAction(status:any,id:any){
+    var data ={
+      status:status.toString(),
+    }
+    this.userService.update(id,data).subscribe((response:any)=>{
+      this.responseMessage = response.message;
+      this.snackbarService.openSnackBar(this.responseMessage,"success");
+   },(error:any)=>{ 
+    console.log(error);
+     if(error.error?.message){
+       this.responseMessage = error.error?.message;
+     }else{
+      this.responseMessage = GlobalConstants.genericError;
+     }
+     this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+   })
+
+  }
 
 
 

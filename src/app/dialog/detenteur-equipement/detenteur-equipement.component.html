@@ -1,1 +1,48 @@
-<p>detenteur-equipement works!</p>
+<div style="width: 800px;">
+
+
+    <mat-dialog-content class="mat-typography" style="width: 800px;">
+        <mat-toolbar class="prim" style="width: 800px;">
+            <mat-toolbar-row fxLayout="row">
+                <span class="title-centers">{{dialogData.action}} Equipement au Détenteur</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form [formGroup]="eqdetForm">
+            <div fxFlex fxLayout="column">
+                
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Détenteur</mat-label>
+                    <mat-select formControlName="holderId">
+                        <mat-option *ngFor="let detenteur of detenteurs" [value]="detenteur.id">
+                            {{detenteur.name}} {{detenteur.firstname}} {{detenteur.lastname}}
+                       
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              
+                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                    <mat-label>Equipement</mat-label>
+                    <mat-select formControlName="equipmentId">
+                        <mat-option *ngFor="let eq of equipements" [value]="eq.id">
+                            {{eq.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Nombre de Minution</mat-label>
+                    <input matInput formControlName="minution" required>
+                    <mat-error *ngIf="eqdetForm.controls.minution.touched && eqdetForm.controls.minution.invalid">
+                        <span *ngIf="eqdetForm.controls.minution.errors.required">Champ Obligatoire</span>
+                        <span *ngIf="eqdetForm.controls.minution.errors.pattern">Saisissez un nombre svp!</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button style="color: white; background-color:#00c292;" types="submit"
+            (click)="handleSubmit()" [disabled]="!(eqdetForm.valid && eqdetForm.dirty)">Save</button>
+        <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>
+
