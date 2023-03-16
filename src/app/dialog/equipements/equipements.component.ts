@@ -119,7 +119,7 @@ export class EquipementsComponent implements OnInit{
         name: formData.name,
         numero_serie: formData.name,
         date_fabrication: formData.name,
-        unite: formData.typeId
+        type: formData.typeId
       }
      
       this.eqForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{
