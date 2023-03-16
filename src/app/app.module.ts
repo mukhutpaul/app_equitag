@@ -47,6 +47,8 @@ import { ManageEquipementComponent } from './pages/manage-equipement/manage-equi
 import { EquipementsComponent } from './dialog/equipements/equipements.component';
 import { ManageEquipementagsComponent } from './pages/manage-equipementags/manage-equipementags.component';
 import { EquipementagsComponent } from './dialog/equipementags/equipementags.component';
+import { DetenteursComponent } from './dialog/detenteurs/detenteurs.component';
+import { ManageDetenteurComponent } from './pages/manage-detenteur/manage-detenteur.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -94,7 +96,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ManageEquipementComponent,
     EquipementsComponent,
     ManageEquipementagsComponent,
-    EquipementagsComponent
+    EquipementagsComponent,
+    DetenteursComponent,
+    ManageDetenteurComponent
   ],
   imports: [
     BrowserModule,

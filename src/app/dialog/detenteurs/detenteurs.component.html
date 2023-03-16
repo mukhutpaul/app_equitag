@@ -1,0 +1,166 @@
+<div style="width: 800px;">
+
+
+    <mat-dialog-content class="mat-typography" style="width: 800px;">
+        <mat-toolbar class="prim" style="width: 800px;">
+            <mat-toolbar-row fxLayout="row">
+                <span class="title-centers">{{dialogData.action}} Détenteur </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form [formGroup]="detForm">
+            <div fxFlex fxLayout="column">
+                <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="detForm.controls.name.touched && detForm.controls.name.invalid">
+                        <span *ngIf="detForm.controls.name.errors.required">This field is mandatory</span>
+                        <span *ngIf="detForm.controls.name.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Date de naissance</mat-label>
+                        <input matInput formControlName="birthday" required>
+                        <mat-error *ngIf="detForm.controls.birthday.touched && detForm.controls.birthday.invalid">
+                            <span *ngIf="detForm.controls.birthday.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.birthday.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Lieu de naissance</mat-label>
+                        <input matInput formControlName="birthplace" required>
+                        <mat-error *ngIf="detForm.controls.birthplace.touched && detForm.controls.birthplace.invalid">
+                            <span *ngIf="detForm.controls.birthplace.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.birthplace.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Post-Nom</mat-label>
+                    <input matInput formControlName="firstname" required>
+                    <mat-error *ngIf="detForm.controls.firstname.touched && detForm.controls.firstname.invalid">
+                        <span *ngIf="detForm.controls.firstname.errors.required">This field is mandatory</span>
+                        <span *ngIf="detForm.controls.firstname.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Prenom</mat-label>
+                        <input matInput formControlName="lastname" required>
+                        <mat-error *ngIf="detForm.controls.lastname.touched && detForm.controls.lastname.invalid">
+                            <span *ngIf="detForm.controls.lastname.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.lastname.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Sexe</mat-label>
+                        <input matInput formControlName="sex" required>
+                        <mat-error *ngIf="detForm.controls.sex.touched && detForm.controls.sex.invalid">
+                            <span *ngIf="detForm.controls.sex.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.sex.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Ville</mat-label>
+                    <input matInput formControlName="city" required>
+                    <mat-error *ngIf="detForm.controls.city.touched && detForm.controls.city.invalid">
+                        <span *ngIf="detForm.controls.city.errors.required">This field is mandatory</span>
+                        <span *ngIf="detForm.controls.city.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Groupe Sanguin</mat-label>
+                        <input matInput formControlName="bloodtype" required>
+                        <mat-error *ngIf="detForm.controls.bloodtype.touched && detForm.controls.bloodtype.invalid">
+                            <span *ngIf="detForm.controls.bloodtype.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.bloodtype.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Genre</mat-label>
+                        <input matInput formControlName="maritalstatus" required>
+                        <mat-error
+                            *ngIf="detForm.controls.maritalstatus.touched && detForm.controls.maritalstatus.invalid">
+                            <span *ngIf="detForm.controls.maritalstatus.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.maritalstatus.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Categorie</mat-label>
+                        <mat-select formControlName="categorieId">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{category.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Unité</mat-label>
+                        <mat-select formControlName="uniteId">
+                            <mat-option *ngFor="let unite of unites" [value]="unite.id">
+                                {{unite.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Grade</mat-label>
+                        <mat-select formControlName="gradeId">
+                            <mat-option *ngFor="let gr of grades" [value]="gr.id">
+                                {{gr.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Bataillon</mat-label>
+                        <mat-select formControlName="bataillonId">
+                            <mat-option *ngFor="let bt of bataillons" [value]="bt.id">
+                                {{bt.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Province</mat-label>
+                        <mat-select formControlName="provinceId">
+                            <mat-option *ngFor="let pr of provinces" [value]="pr.id">
+                                {{pr.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex>
+                        <mat-label>Adresse</mat-label>
+                        <input matInput formControlName="address" required>
+                        <mat-error *ngIf="detForm.controls.address.touched && detForm.controls.address.invalid">
+                            <span *ngIf="detForm.controls.address.errors.required">This field is mandatory</span>
+                            <span *ngIf="detForm.controls.address.errors.pattern">This field is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button style="color: white; background-color:#00c292;" types="submit"
+            (click)="handleSubmit()" [disabled]="!(detForm.valid && detForm.dirty)">Save</button>
+        <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>
