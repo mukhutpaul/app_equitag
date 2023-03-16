@@ -56,13 +56,13 @@
                         </mat-error>
                     </mat-form-field>
 
+
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Sexe</mat-label>
-                        <input matInput formControlName="sex" required>
-                        <mat-error *ngIf="detForm.controls.sex.touched && detForm.controls.sex.invalid">
-                            <span *ngIf="detForm.controls.sex.errors.required">This field is mandatory</span>
-                            <span *ngIf="detForm.controls.sex.errors.pattern">This field is invalid</span>
-                        </mat-error>
+                        <mat-select formControlName="sex">
+                            <mat-option id="M" value="M">M</mat-option>
+                            <mat-option id="F" value="F">F</mat-option>
+                        </mat-select>
                     </mat-form-field>
 
                 </div>
@@ -86,13 +86,13 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" fxFlex>
-                        <mat-label>Genre</mat-label>
-                        <input matInput formControlName="maritalstatus" required>
-                        <mat-error
-                            *ngIf="detForm.controls.maritalstatus.touched && detForm.controls.maritalstatus.invalid">
-                            <span *ngIf="detForm.controls.maritalstatus.errors.required">This field is mandatory</span>
-                            <span *ngIf="detForm.controls.maritalstatus.errors.pattern">This field is invalid</span>
-                        </mat-error>
+                        <mat-label>Etat Civil</mat-label>
+                        <mat-select formControlName="maritalstatus">
+                            <mat-option id="CELIBATAIRE" value="CELIBATAIRE">CELIBATAIRE</mat-option>
+                            <mat-option id="MARIE" value="MARIE">MARIE(E)</mat-option>
+                            <mat-option id="DIVORCE" value="DIVORCE">DIVORCE(E)</mat-option>
+                            <mat-option id="VEUF" value="VEUF">VEUF(VE)</mat-option>
+                        </mat-select>
                     </mat-form-field>
 
                 </div>
@@ -102,8 +102,8 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Categorie</mat-label>
                         <mat-select formControlName="categorieId">
-                            <mat-option *ngFor="let category of categories" [value]="category.id">
-                                {{category.name}}
+                            <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
+                                {{categorie.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -145,12 +145,12 @@
 
                 </div>
                 <div fxLayout="row wrap">
-                    <mat-form-field appearance="fill" fxFlex>
+                    <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                         <mat-label>Adresse</mat-label>
                         <input matInput formControlName="address" required>
                         <mat-error *ngIf="detForm.controls.address.touched && detForm.controls.address.invalid">
                             <span *ngIf="detForm.controls.address.errors.required">This field is mandatory</span>
-                            <span *ngIf="detForm.controls.address.errors.pattern">This field is invalid</span>
+                            <span *ngIf="detForm.controls.address.errors.pattern">This field is invalide</span>
                         </mat-error>
                     </mat-form-field>
                 </div>

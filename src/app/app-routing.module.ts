@@ -9,6 +9,7 @@ import { EquipementDetenteurComponent } from './pages/equipement-detenteur/equip
 import { LoginComponent } from './pages/login/login.component';
 import { ManageBataillonComponent } from './pages/manage-bataillon/manage-bataillon.component';
 import { ManageCategorieComponent } from './pages/manage-categorie/manage-categorie.component';
+import { ManageDetenteurComponent } from './pages/manage-detenteur/manage-detenteur.component';
 import { ManageEquipementComponent } from './pages/manage-equipement/manage-equipement.component';
 import { ManageEquipementagsComponent } from './pages/manage-equipementags/manage-equipementags.component';
 import { ManageGradeComponent } from './pages/manage-grade/manage-grade.component';
@@ -71,13 +72,22 @@ const routes: Routes = [
 
   },
   {
-    path: 'equipementags', 
+  path: 'equipementags', 
     component:ManageEquipementagsComponent, 
    // canActivate:[RouteGuardService],
     // data:{
     //   //expectedRole:['admin']
     // }
   
+  },
+  {
+    path: 'detenteurs', 
+      component:ManageDetenteurComponent, 
+     // canActivate:[RouteGuardService],
+      // data:{
+      //   //expectedRole:['admin']
+      // }
+    
     },
   {
   path: 'tags', 

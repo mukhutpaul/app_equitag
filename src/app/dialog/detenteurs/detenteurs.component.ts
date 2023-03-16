@@ -47,7 +47,7 @@ export class DetenteursComponent implements OnInit{
       this.detForm = this.formBuilder.group({
         name:[null,[Validators.required]],
         address:[null,[Validators.required]],
-        birthday:[null,[Validators.required]],
+        birthday:[null,[Validators.required,Validators.pattern(GlobalConstants.dateRegex)]],
         birthplace:[null,[Validators.required]],
         sex:[null,[Validators.required]],
         firstname:[null,[Validators.required]],
@@ -71,9 +71,11 @@ export class DetenteursComponent implements OnInit{
       this.getUnites();
       this.getBataillons();
       this.getProvinces();
-      this.getGrades();
+      this.getGrade();
       this.getCategories();
-     
+     console.log(this.categories)
+     console.log(this.provinces)
+     console.log(this.grades)
     }
   
     // handleSubmit(){
@@ -123,8 +125,8 @@ export class DetenteursComponent implements OnInit{
         birthday:formData.birthday ,
         birthplace: formData.birthplace,
         sex: formData.sex,
-        firstname: formData.first_name,
-        lastname:formData.last_name ,
+        firstname: formData.firstname,
+        lastname:formData.lastname ,
         city: formData.city,
         bloodtype: formData.bloodtype,
         maritalstatus: formData.maritalstatus,
@@ -132,7 +134,7 @@ export class DetenteursComponent implements OnInit{
         bataillon: formData.bataillonId,
         categorie:formData.categorieId ,
         grade:formData.gradeId ,
-        province:formData.providedIn
+        province:formData.provinceId
     
       }
       console.log(data);
@@ -204,7 +206,7 @@ export class DetenteursComponent implements OnInit{
 
     getCategories(){
       this.catserv.getCategories().subscribe((response:any)=>{
-        this.unites = response?.data;
+        this.categories = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -216,9 +218,9 @@ export class DetenteursComponent implements OnInit{
      })
   
     }
-    getGrades(){
+    getGrade(){
       this.grserv.getGrades().subscribe((response:any)=>{
-        this.unites = response?.data;
+        this.grades = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -232,8 +234,8 @@ export class DetenteursComponent implements OnInit{
     }
 
     getProvinces(){
-      this.provinces.getProvinces().subscribe((response:any)=>{
-        this.unites = response?.data;
+      this.prserv.getProvinces().subscribe((response:any)=>{
+        this.provinces = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -248,7 +250,7 @@ export class DetenteursComponent implements OnInit{
 
     getBataillons(){
       this.bataillonService.getBataillons().subscribe((response:any)=>{
-        this.unites = response?.data;
+        this.bataillons = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
