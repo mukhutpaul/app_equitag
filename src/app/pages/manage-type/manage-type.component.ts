@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CategorieComponent } from 'src/app/dialog/categorie/categorie.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { TypeComponent } from 'src/app/dialog/type/type.component';
@@ -37,10 +38,12 @@ export class ManageTypeComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private typeService:TypeService,
+    private ngxService : NgxUiLoaderService
     ) { }
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
 
   }
@@ -49,6 +52,7 @@ export class ManageTypeComponent implements OnInit{
  async tableData(){
     return await this.typeService.getTypes().subscribe((response:any)=>{
       console.log(response)
+      this.ngxService.stop();
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
       this.dataSource.sort = this.sort;

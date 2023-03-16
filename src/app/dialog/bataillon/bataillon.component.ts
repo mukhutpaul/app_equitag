@@ -28,10 +28,12 @@ export class BataillonComponent implements OnInit{
       private router:Router, private bataillonService:BataillonService,private uniteService:UniteService,
       private snackbarService:SnackbarService,
       private dialogRef:MatDialogRef<BataillonComponent>,
-      private ngxService:NgxUiLoaderService) { }
+      private ngxService:NgxUiLoaderService) {
+    
+       }
   
     ngOnInit(): void {
-      
+    
       this.bataillonForm = this.formBuilder.group({
         name:[null,[Validators.required]],
         uniteId:[null,[Validators.required]],
@@ -85,6 +87,7 @@ export class BataillonComponent implements OnInit{
     }
   
    add(){
+     
       var formData = this.bataillonForm.value;
       var data ={
         name: formData.name,
@@ -93,6 +96,7 @@ export class BataillonComponent implements OnInit{
       }
       console.log(data);
       this.bataillonService.addBataillon(data).subscribe((response:any)=>{
+      
          this.dialogRef.close();
          this.onAddBataillon.emit();
          this.responseMessage = "Bataillon enregistrée!";

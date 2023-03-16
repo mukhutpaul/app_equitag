@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-darshboard',
@@ -7,4 +9,21 @@ import { Component } from '@angular/core';
 })
 export class DarshboardComponent {
 
+  constructor(
+		private ngxservice:NgxUiLoaderService,
+		private snackbarservice:SnackbarService
+		) {
+		
+		this.ngxservice.start();
+    this.dashboardData();
+	
+	}
+
+  dashboardData(){
+  
+  this.ngxservice.stop();
+ 
 }
+}
+
+

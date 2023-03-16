@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { UniteComponent } from 'src/app/dialog/unite/unite.component';
@@ -36,18 +37,21 @@ export class ManageBataillonComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private bataillonService:BataillonService,
-    private uniteService: UniteService
+    private uniteService: UniteService,
+    private ngxService : NgxUiLoaderService,
     ) { }
 
 
   ngOnInit(): void {
     this.tableData();
+    this.ngxService.start();
 
   }
 
 
  async tableData(){
     return await this.bataillonService.getBataillons().subscribe((response:any)=>{
+      this.ngxService.stop();
       console.log(response)
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;

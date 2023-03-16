@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { EquipementagsComponent } from 'src/app/dialog/equipementags/equipementags.component';
@@ -38,11 +39,13 @@ export class  ManageEquipementagsComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private eqtagService:EquipementagsService,
-    private uniteService: UniteService
+    private uniteService: UniteService,
+    private ngxService : NgxUiLoaderService
     ) { }
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
 
   }
@@ -51,6 +54,7 @@ export class  ManageEquipementagsComponent implements OnInit{
  async tableData(){
     return await this.eqtagService.getEquipementags().subscribe((response:any)=>{
       console.log(response)
+      this.ngxService.stop();
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
       this.dataSource.sort = this.sort;

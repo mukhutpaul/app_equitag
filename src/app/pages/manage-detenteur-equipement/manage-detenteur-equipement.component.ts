@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { DetenteurEquipementComponent } from 'src/app/dialog/detenteur-equipement/detenteur-equipement.component';
@@ -40,11 +41,13 @@ export class  ManageDetenteurEquipementComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private eqDetService:DetenteurEquipementService,
-    private uniteService: UniteService
+    private uniteService: UniteService,
+    private ngxService : NgxUiLoaderService
     ) { }
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
 
   }
@@ -53,6 +56,7 @@ export class  ManageDetenteurEquipementComponent implements OnInit{
  async tableData(){
     return await this.eqDetService.get().subscribe((response:any)=>{
       console.log(response)
+      this.ngxService.stop();
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
       this.dataSource.sort = this.sort;

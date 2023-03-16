@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
@@ -32,10 +33,12 @@ export class UtilisateurComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private userService:UserService,
+    private ngxService : NgxUiLoaderService
     ) { }
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
 
   }
@@ -44,6 +47,7 @@ export class UtilisateurComponent implements OnInit{
  async tableData(){
     return await this.userService.getUsers().subscribe((response:any)=>{
       console.log(response)
+      this.ngxService.stop();
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
       this.dataSource.sort = this.sort;

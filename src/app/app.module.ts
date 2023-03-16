@@ -58,7 +58,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textPosition:"center-center",
   pbColor:"#596643",
   bgsColor:"#596643",
-  fgsColor:"#596643",
+  fgsColor:"#00c292",
   fgsType:SPINNER.ballSpinClockwiseFadeRotating,
   fgsSize:100,
   pbDirection:PB_DIRECTION.leftToRight,

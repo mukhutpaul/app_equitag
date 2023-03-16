@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
 import { UniteComponent } from 'src/app/dialog/unite/unite.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -33,10 +34,12 @@ export class ManageUniteComponent implements OnInit{
     private snackbarService:SnackbarService,
     private router:Router,
     private uniteService:UniteService,
+    private ngxService : NgxUiLoaderService
     ) { }
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.tableData();
 
   }
@@ -45,6 +48,7 @@ export class ManageUniteComponent implements OnInit{
  async tableData(){
     return await this.uniteService.getUnites().subscribe((response:any)=>{
       console.log(response)
+      this.ngxService.stop();
       this.dataSource =  new MatTableDataSource(response?.data);
       this.total = response?.total;
       this.dataSource.sort = this.sort;
