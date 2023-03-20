@@ -21,11 +21,12 @@ export class LoginComponent implements OnInit {
       private ngxService :NgxUiLoaderService) { }
 
  ngOnInit(): void {
-  this.ngxService.start();
+  localStorage.clear();
+ 
   }
 
 login(){
-  this.ngxService.start();
+  
   var data ={
       username:this.username,
       password:this.password

@@ -16,6 +16,7 @@ export class DarshboardComponent {
 		
 		this.ngxservice.start();
     this.dashboardData();
+    
 	
 	}
 
