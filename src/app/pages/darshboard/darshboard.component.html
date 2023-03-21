@@ -21,9 +21,9 @@
                             <div class="cards">
                                 <div class="containers">
                                     <h2 class="title">Total Equipement:</h2>
-                                    <h1 class="title"></h1>
+                                    <h1 class="title">{{data?.equipment}}</h1>
                                     <p><button type="button" class="btn btn-login btn-success button"
-                                            routerLink="['/cafe/category']">Voir Equipement</button></p>
+                                            routerLink="/equipement">Voir Equipements</button></p>
                                 </div>
 
                             </div>
@@ -33,23 +33,10 @@
                         <div class="column">
                             <div class="cards">
                                 <div class="containers">
-                                    <h2 class="title">Total Utilisateur:</h2>
-                                    <h1 class="title"></h1>
+                                    <h2 class="title">Total Détenteur:</h2>
+                                    <h1 class="title">{{data?.holder}}</h1>
                                     <p><button type="button" class="button btn btn-login btn-success"
-                                            routerLink="['/cafe/product']">Voir Utilisateurs</button></p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="column">
-                            <div class="cards">
-                                <div class="containers">
-                                    <h2 class="title">Total Tag:</h2>
-                                    <h1 class="title"></h1>
-                                    <p><button type="button" class="button btn btn-login btn-success"
-                                            routerLink="['/cafe/category']">Voir Tags</button></p>
+                                            routerLink="/detenteurs">Voir Détenteurs</button></p>
                                 </div>
 
                             </div>
@@ -60,9 +47,22 @@
                             <div class="cards">
                                 <div class="containers">
                                     <h2 class="title">Total Tag:</h2>
-                                    <h1 class="title"></h1>
+                                    <h1 class="title">{{data?.tag}}</h1>
                                     <p><button type="button" class="button btn btn-login btn-success"
-                                            routerLink="['/cafe/category']">Voir Tags</button></p>
+                                            routerLink="/tags">Voir Tags</button></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="column">
+                            <div class="cards">
+                                <div class="containers">
+                                    <h2 class="title">Total Bataillon:</h2>
+                                    <h1 class="title">{{data?.bataillon}}</h1>
+                                    <p><button type="button" class="button btn btn-login btn-success"
+                                            routerLink="/bataillons">Voir Bataillons</button></p>
                                 </div>
 
                             </div>
@@ -71,10 +71,10 @@
                         <div class="column">
                             <div class="cards">
                                 <div class="containers">
-                                    <h2 class="title">Total Tag:</h2>
-                                    <h1 class="title"></h1>
+                                    <h2 class="title">Total Grade:</h2>
+                                    <h1 class="title">{{data?.grade}}</h1>
                                     <p><button type="button" class="button btn btn-login btn-success"
-                                            routerLink="['/cafe/category']">Voir Tags</button></p>
+                                            routerLink="/grades">Voir Grades</button></p>
                                 </div>
 
                             </div>
@@ -83,10 +83,48 @@
                         <div class="column">
                             <div class="cards">
                                 <div class="containers">
-                                    <h2 class="title">Total Tag:</h2>
-                                    <h1 class="title"></h1>
+                                    <h2 class="title">Total Catégorie:</h2>
+                                    <h1 class="title">{{data?.categorie}}</h1>
                                     <p><button type="button" class="button btn btn-login btn-success"
-                                            routerLink="['/cafe/category']">Voir Tags</button></p>
+                                            routerLink="/categories">Voir Catégories</button></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="column">
+                            <div class="cards">
+                                <div class="containers">
+                                    <h2 class="title">Total Unité:</h2>
+                                    <h1 class="title">{{data?.unite}}</h1>
+                                    <p><button type="button" class="button btn btn-login btn-success"
+                                            routerLink="/unites">Voir Unités</button></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="column">
+                            <div class="cards">
+                                <div class="containers">
+                                    <h2 class="title">Total Type:</h2>
+                                    <h1 class="title">{{data?.type}}</h1>
+                                    <p><button type="button" class="button btn btn-login btn-success"
+                                            routerLink="/types">Voir Types</button></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="column">
+                            <div class="cards">
+                                <div class="containers">
+                                    <h2 class="title">Total Province:</h2>
+                                    <h1 class="title">{{data?.province}}</h1>
+                                    <p><button type="button" class="button btn btn-login btn-success"
+                                            routerLink="/provinces">Voir Provinces </button></p>
                                 </div>
 
                             </div>
