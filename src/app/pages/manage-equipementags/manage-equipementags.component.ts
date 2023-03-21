@@ -130,7 +130,7 @@ export class  ManageEquipementagsComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data ={
-      message:'delete tag '+value.tag+' and '+'equipment '+value.equipment
+      message:'delete tag '+value.tag.name+' and '+'equipment '+value.equipment.name
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response:any)=>{

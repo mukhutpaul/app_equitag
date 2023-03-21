@@ -132,7 +132,7 @@ export class  ManageDetenteurEquipementComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data ={
-      message:'delete detenteur '+value.holder+' and '+'equipment '+value.equipment
+      message:'delete detenteur '+value.holder.name+' and '+'equipment '+value.equipment.name
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response:any)=>{
