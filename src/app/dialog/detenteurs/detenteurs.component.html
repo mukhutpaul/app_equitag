@@ -101,7 +101,7 @@
                 <div fxLayout="row wrap">
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Categorie</mat-label>
-                        <mat-select formControlName="categorieId">
+                        <mat-select formControlName="categorie">
                             <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
                                 {{categorie.name}}
                             </mat-option>
@@ -109,7 +109,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Unité</mat-label>
-                        <mat-select formControlName="uniteId">
+                        <mat-select formControlName="unite">
                             <mat-option *ngFor="let unite of unites" [value]="unite.id">
                                 {{unite.name}}
                             </mat-option>
@@ -117,7 +117,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Grade</mat-label>
-                        <mat-select formControlName="gradeId">
+                        <mat-select formControlName="grade">
                             <mat-option *ngFor="let gr of grades" [value]="gr.id">
                                 {{gr.name}}
                             </mat-option>
@@ -128,7 +128,7 @@
                 <div fxLayout="row wrap">
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Bataillon</mat-label>
-                        <mat-select formControlName="bataillonId">
+                        <mat-select formControlName="bataillon">
                             <mat-option *ngFor="let bt of bataillons" [value]="bt.id">
                                 {{bt.name}}
                             </mat-option>
@@ -136,7 +136,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Province</mat-label>
-                        <mat-select formControlName="provinceId">
+                        <mat-select formControlName="province">
                             <mat-option *ngFor="let pr of provinces" [value]="pr.id">
                                 {{pr.name}}
                             </mat-option>

@@ -36,13 +36,19 @@ export class  EquipementagsComponent implements OnInit{
     ngOnInit(): void {
       
       this.eqtagForm = this.formBuilder.group({
-        tagId:[null,[Validators.required]],
-        equipmentId:[null,[Validators.required]],
+        tag:[null,[Validators.required]],
+        equipment:[null,[Validators.required]],
       });
       if(this.dialogData.action === "Modification"){
         this.dialogAction = "Modification";
         this.action = "Update";
-        this.eqtagForm.patchValue(this.dialogData.data);
+        this.eqtagForm.patchValue({
+          created_on: this.dialogData.data.created_on,
+          equipment:  this.dialogData.data.equipment.id,
+          is_active:  this.dialogData.data.is_active,
+          tag:  this.dialogData.data.tag.id,
+          updated_on:  this.dialogData.data.updated_on
+        });
       }
       this.getEquipements();
       this.getTags();
@@ -91,8 +97,8 @@ export class  EquipementagsComponent implements OnInit{
    add(){
       var formData = this.eqtagForm.value;
       var data ={
-        tag: formData.tagId,
-        equipment: formData.equipmentId
+        tag: formData.tag,
+        equipment: formData.equipment
     
       }
       console.log(data);

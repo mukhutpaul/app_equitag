@@ -12,7 +12,7 @@
                 
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Tag</mat-label>
-                    <mat-select formControlName="tagId">
+                    <mat-select formControlName="tag">
                         <mat-option *ngFor="let tag of tags" [value]="tag.id">
                             {{tag.name}}
                         </mat-option>
@@ -21,7 +21,7 @@
               
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Equipement</mat-label>
-                    <mat-select formControlName="equipmentId">
+                    <mat-select formControlName="equipment">
                         <mat-option *ngFor="let eq of equipements" [value]="eq.id">
                             {{eq.name}}
                         </mat-option>

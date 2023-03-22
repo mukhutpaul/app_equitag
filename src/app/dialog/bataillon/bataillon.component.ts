@@ -22,6 +22,7 @@ export class BataillonComponent implements OnInit{
   action:any ="Ajout"; 
   responseMessage:any;
   unites:any=[];
+  data:any;
    
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
@@ -36,12 +37,26 @@ export class BataillonComponent implements OnInit{
     
       this.bataillonForm = this.formBuilder.group({
         name:[null,[Validators.required]],
-        uniteId:[null,[Validators.required]],
+        unite:[null,[Validators.required]],
       });
       if(this.dialogData.action === "Modification"){
         this.dialogAction = "Modification";
         this.action = "Update";
-        this.bataillonForm.patchValue(this.dialogData.data);
+        this.bataillonForm.patchValue({
+          created_on:this.dialogData.data.created_on,
+          id:this.dialogData.data.id,
+          name:this.dialogData.data.name,
+          unite:this.dialogData.data.unite.id
+        }
+          );
+        console.log(
+          {
+            created_on:this.dialogData.data.created_on,
+            id:this.dialogData.data.id,
+            name:this.dialogData.data.name,
+            unite:this.dialogData.data.unite.id
+          }
+        )
       }
       this.getUnites();
      
@@ -91,7 +106,7 @@ export class BataillonComponent implements OnInit{
       var formData = this.bataillonForm.value;
       var data ={
         name: formData.name,
-        unite: formData.uniteId
+        unite: formData.unite
     
       }
       console.log(data);
@@ -115,7 +130,7 @@ export class BataillonComponent implements OnInit{
       var formData = this.bataillonForm.value;
       var data ={
         name: formData.name,
-        unite: formData.uniteId
+        unite: formData.unite
       }
       console.log(this.dialogData.data.id);
       this.bataillonForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{

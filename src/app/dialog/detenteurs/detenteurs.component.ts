@@ -55,18 +55,40 @@ export class DetenteursComponent implements OnInit{
         city:[null,[Validators.required]],
         bloodtype:[null,[Validators.required]],
         maritalstatus:[null,[Validators.required]],
-        uniteId:[null,[Validators.required]],
-        bataillonId:[null,[Validators.required]],
-        categorieId:[null,[Validators.required]],
-        gradeId:[null,[Validators.required]],
-        provinceId:[null,[Validators.required]],
+        unite:[null,[Validators.required]],
+        bataillon:[null,[Validators.required]],
+        categorie:[null,[Validators.required]],
+        grade:[null,[Validators.required]],
+        province:[null,[Validators.required]],
       });
       
     
       if(this.dialogData.action === "Modification"){
         this.dialogAction = "Modification";
         this.action = "Update";
-        this.detForm.patchValue(this.dialogData.data);
+        this.detForm.patchValue(
+          {
+            name:this.dialogData.data.name,
+            address: this.dialogData.data.address,
+            birthday: this.dialogData.data.birthday,
+            birthplace: this.dialogData.data.birthplace,
+            bloodtype:  this.dialogData.data.bloodtype,
+            sex: this.dialogData.data.sex,
+            firstname: this.dialogData.data.firstname,
+            lastname: this.dialogData.data.lastname,
+            city: this.dialogData.data.city,
+            maritalstatus: this.dialogData.data.maritalstatus,
+            unite: this.dialogData.data.unite.id,
+            bataillon: this.dialogData.data.bataillon.id,
+            categorie: this.dialogData.data.categorie.id,
+            grade: this.dialogData.data.grade.id,
+            province: this.dialogData.data.province.id
+        });
+        console.log( 
+        
+            this.dialogData.data
+      
+      )
       }
       this.getUnites();
       this.getBataillons();
@@ -130,11 +152,11 @@ export class DetenteursComponent implements OnInit{
         city: formData.city,
         bloodtype: formData.bloodtype,
         maritalstatus: formData.maritalstatus,
-        unite:formData.uniteId,
-        bataillon: formData.bataillonId,
-        categorie:formData.categorieId ,
-        grade:formData.gradeId ,
-        province:formData.provinceId
+        unite:formData.unite,
+        bataillon: formData.bataillon,
+        categorie:formData.categorie ,
+        grade:formData.grade ,
+        province:formData.province
     
       }
       console.log(data);
@@ -166,11 +188,11 @@ export class DetenteursComponent implements OnInit{
         city: formData.city,
         bloodtype: formData.bloodtype,
         maritalstatus: formData.maritalstatus,
-        unite:formData.uniteId,
-        bataillon: formData.bataillonId,
-        categorie:formData.categorieId ,
-        grade:formData.gradeId ,
-        province:formData.providedIn
+        unite:formData.unite,
+        bataillon: formData.bataillon,
+        categorie:formData.categorie ,
+        grade:formData.grade ,
+        province:formData.province
       }
       console.log(this.dialogData.data.id);
       this.detForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{

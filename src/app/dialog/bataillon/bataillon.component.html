@@ -18,7 +18,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Unité</mat-label>
-                    <mat-select formControlName="uniteId">
+                    <mat-select formControlName="unite">
                         <mat-option *ngFor="let unite of unites"  [value]="unite.id">
                             {{unite.name}}
                         </mat-option>

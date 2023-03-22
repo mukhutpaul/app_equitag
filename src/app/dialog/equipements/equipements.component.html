@@ -45,9 +45,9 @@
 
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Type Equipemen</mat-label>
-                    <mat-select formControlName="typeId">
-                        <mat-option *ngFor="let type of types" [value]="type.id">
-                            {{type.name}}
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let typ of types" [value]="typ.id">
+                            {{typ.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

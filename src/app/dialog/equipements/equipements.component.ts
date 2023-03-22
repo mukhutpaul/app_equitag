@@ -38,13 +38,36 @@ export class EquipementsComponent implements OnInit{
         name:[null,[Validators.required]],
         numero_serie:[null,[Validators.required]],
         date_fabrication:[null,[Validators.required,Validators.pattern(GlobalConstants.dateRegex)]],
-        typeId:[null,[Validators.required]],
+        type:[null,[Validators.required]],
       });
       if(this.dialogData.action === "Modification"){
         this.dialogAction = "Modification";
         this.action = "Update";
-        this.eqForm.patchValue(this.dialogData.data);
+        this.eqForm.patchValue(
+          {
+            created_on: this.dialogData.data.created_on,
+            date_fabrication:this.dialogData.data.date_fabrication, 
+            id: this.dialogData.data.id,
+            is_active : this.dialogData.data.is_active,
+            name: this.dialogData.data.name,
+            numero_serie : this.dialogData.data.numero_serie,
+            type : this.dialogData.data.type.id,
+            updated_on : this.dialogData.data.updated_on
+
+          });
+          console.log({
+            created_on: this.dialogData.data.created_on,
+            date_fabrication:this.dialogData.data.date_fabrication, 
+            id: this.dialogData.data.id,
+            is_active : this.dialogData.data.is_active,
+            name: this.dialogData.data.name,
+            numero_serie : this.dialogData.data.numero_serie,
+            type : this.dialogData.data.type.name,
+            updated_on : this.dialogData.data.updated_on
+
+          })
       }
+
       this.getTypes();
      
     }
@@ -94,7 +117,7 @@ export class EquipementsComponent implements OnInit{
         name: formData.name,
         numero_serie: formData.numero_serie,
         date_fabrication: formData.date_fabrication,
-        type: formData.typeId
+        type: formData.type
     
       }
       console.log(data);
@@ -119,7 +142,7 @@ export class EquipementsComponent implements OnInit{
         name: formData.name,
         numero_serie: formData.name,
         date_fabrication: formData.name,
-        type: formData.typeId
+        type: formData.type
       }
      
       this.eqForm.update(this.dialogData.data.id,data).subscribe((response:any)=>{
