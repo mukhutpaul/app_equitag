@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
 
  ngOnInit(): void {
   localStorage.clear();
- 
+  
   }
 
 login(){
-  
+  this.ngxService.start()
   var data ={
       username:this.username,
       password:this.password
@@ -34,7 +34,9 @@ login(){
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
       localStorage.setItem('token',response.token);
+      
       this.router.navigate(['darshboard']);
+      //this.ngxService.stop()
       console.log(response.data)
     },(error)=>{
       if(error.error?.detail){
