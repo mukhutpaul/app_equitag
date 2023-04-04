@@ -40,6 +40,7 @@ login(){
       console.log(response.data)
     },(error)=>{
       if(error.error?.detail){
+        this.ngxService.stop()
         this.responseMessage = error.error?.detail;
       }else{
         this.responseMessage = GlobalConstants.genericError;

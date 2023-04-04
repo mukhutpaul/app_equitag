@@ -150,6 +150,7 @@ export class  ManageDetenteurEquipementComponent implements OnInit{
    },(error:any)=>{ 
     console.log(error);
      if(error.error?.detail){
+       this.ngxService.stop()
        this.responseMessage = error.error?.detail;
      }else{
       this.responseMessage = GlobalConstants.genericError;

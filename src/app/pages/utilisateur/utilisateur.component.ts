@@ -55,6 +55,7 @@ export class UtilisateurComponent implements OnInit{
     },(error)=>{
    
       if(error.error?.message){
+        this.ngxService.stop()
         this.responseMessage = error.error?.Message;
       }
       else{

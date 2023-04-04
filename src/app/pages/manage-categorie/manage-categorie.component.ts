@@ -58,6 +58,7 @@ export class ManageCategorieComponent implements OnInit{
     },(error)=>{
    
       if(error.error?.detail){
+        this.ngxService.stop()
         this.responseMessage = error.error?.detail;
       }
       else{
