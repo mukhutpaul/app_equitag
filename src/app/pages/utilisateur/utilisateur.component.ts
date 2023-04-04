@@ -42,8 +42,6 @@ export class UtilisateurComponent implements OnInit{
     this.tableData();
 
   }
-
-
  async tableData(){
     return await this.userService.getUsers().subscribe((response:any)=>{
       console.log(response)
@@ -166,9 +164,4 @@ export class UtilisateurComponent implements OnInit{
    })
 
   }
-
-
-
-
-
 }
