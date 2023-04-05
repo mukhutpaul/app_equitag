@@ -1,0 +1,58 @@
+<mat-dialog-content class="mat-topography">
+
+ <mat-toolbar class="prim">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">DETENTEURS LIES A CET EQUIPEMENT</span>
+        <span class="spacer"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+    <table id="customers" style="border:1px solid">
+        <tr>
+            <td><b>Name: </b>{{datas.name}}</td>
+            <td><b>Date de fabrication: </b>{{datas.date_fabrication}}</td>
+			<td><b>Type: </b>{{datas.type.name}}</td>
+			
+        </tr>
+
+    </table>
+</mat-dialog-content>
+
+<div class="responsive_table">
+    <br>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        
+      </ng-container>
+
+     <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef>Post-Nom</th>
+        <td mat-cell *matCellDef="let element">{{element.firstname}}</td>
+    
+     </ng-container>
+
+     <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef>Prenom</th>
+        <td mat-cell *matCellDef="let element">{{element.lastname}}</td>
+    
+     </ng-container>
+	  <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef>Grade</th>
+        <td mat-cell *matCellDef="let element">{{element.grade}}</td>
+    
+     </ng-container>
+	 
+	  <ng-container matColumnDef="unite">
+        <th mat-header-cell *matHeaderCellDef>Unité</th>
+        <td mat-cell *matCellDef="let element">{{element.unite}}</td>
+    
+     </ng-container>
+     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+     <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+    </table>
+
+
+</div>

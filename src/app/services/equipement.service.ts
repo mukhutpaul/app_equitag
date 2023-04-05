@@ -60,5 +60,12 @@ export class EquipementService {
     })
   }
 
+  detailseq(id:any){
+    return this.httpClient.get(this.url+"/api/equipment/equipments/holders/"+id,{
+      headers: new HttpHeaders().set('Content-type',"application/json")
+
+    })
+  }
+
 
 }

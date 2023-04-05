@@ -53,6 +53,13 @@ export class DetenteurService {
     })
   }
 
+  detailsdet(id:any){
+    return this.httpClient.get(this.url+"/api/holder/holders/equipments/"+id,{
+      headers: new HttpHeaders().set('Content-type',"application/json")
+
+    })
+  }
+
   delete(id:any){
     return this.httpClient.delete(this.url+"/api/holder/holders/"+id,{
       headers: new HttpHeaders().set('Content-type',"application/json")

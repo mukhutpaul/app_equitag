@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
+import { DetailEquipementComponent } from 'src/app/dialog/detail-equipement/detail-equipement.component';
 import { EquipementsComponent } from 'src/app/dialog/equipements/equipements.component';
 import { UniteComponent } from 'src/app/dialog/unite/unite.component';
 import { BataillonService } from 'src/app/services/bataillon.service';
@@ -77,6 +78,19 @@ export class ManageEquipementComponent implements OnInit{
   applyFilter(event:Event){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
+
+  handleViewAction(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      data:values
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(DetailEquipementComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
   }
 
   

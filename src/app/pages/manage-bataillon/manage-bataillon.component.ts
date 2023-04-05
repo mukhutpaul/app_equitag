@@ -112,7 +112,7 @@ export class ManageBataillonComponent implements OnInit{
       action:"Modification",
       data:values
     }
-    //dialogConfig.width="850px";
+    dialogConfig.width="850px";
     const dialogRef = this.dialog.open(BataillonComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{

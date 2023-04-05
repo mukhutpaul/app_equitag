@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BataillonComponent } from 'src/app/dialog/bataillon/bataillon.component';
 import { ConfirmationComponent } from 'src/app/dialog/confirmation/confirmation.component';
+import { DetailDetenteurComponent } from 'src/app/dialog/detail-detenteur/detail-detenteur.component';
 import { DetenteursComponent } from 'src/app/dialog/detenteurs/detenteurs.component';
 import { UniteComponent } from 'src/app/dialog/unite/unite.component';
 import { BataillonService } from 'src/app/services/bataillon.service';
@@ -78,6 +79,19 @@ export class ManageDetenteurComponent  implements OnInit{
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
   }
 
+  handleViewAction(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      data:values
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(DetailDetenteurComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+  }
+
   
   // signupAction(){
   //   const dialogConfig = new MatDialogConfig();
@@ -90,7 +104,7 @@ export class ManageDetenteurComponent  implements OnInit{
     dialogConfig.data={
       action:"Ajout"
     }
-   // dialogConfig.width="850px";
+    dialogConfig.width="850px";
     const dialogRef = this.dialog.open(DetenteursComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{

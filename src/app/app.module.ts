@@ -51,6 +51,8 @@ import { DetenteursComponent } from './dialog/detenteurs/detenteurs.component';
 import { ManageDetenteurComponent } from './pages/manage-detenteur/manage-detenteur.component';
 import { ManageDetenteurEquipementComponent } from './pages/manage-detenteur-equipement/manage-detenteur-equipement.component';
 import { DetenteurEquipementComponent } from './dialog/detenteur-equipement/detenteur-equipement.component';
+import { DetailDetenteurComponent } from './dialog/detail-detenteur/detail-detenteur.component';
+import { DetailEquipementComponent } from './dialog/detail-equipement/detail-equipement.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -102,7 +104,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DetenteursComponent,
     ManageDetenteurComponent,
     ManageDetenteurEquipementComponent,
-    DetenteurEquipementComponent
+    DetenteurEquipementComponent,
+    DetailDetenteurComponent,
+    DetailEquipementComponent
   ],
   imports: [
     BrowserModule,

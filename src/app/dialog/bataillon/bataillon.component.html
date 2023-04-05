@@ -1,7 +1,7 @@
 <div style="width: 800px;">
 
 
-    <mat-dialog-content class="mat-typography" style="width: 800px;">
+    <mat-dialog-content class="mat-typography">
         <mat-toolbar class="prim" style="width: 800px;">
             <mat-toolbar-row fxLayout="row">
                 <span class="title-centers">{{dialogData.action}} Bataillon </span>
@@ -9,7 +9,7 @@
         </mat-toolbar>
         <form [formGroup]="bataillonForm">
             <div fxFlex fxLayout="column">
-                <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
+                <mat-form-field appearance="fill" fxFlex>
                     <mat-label>Nom Bataillon</mat-label>
                     <input matInput formControlName="name" required>
                     <mat-error *ngIf="bataillonForm.controls.name.touched && bataillonForm.controls.name.invalid">

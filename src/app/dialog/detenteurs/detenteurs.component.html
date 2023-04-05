@@ -1,8 +1,6 @@
-<div style="width: 800px;">
 
-
-    <mat-dialog-content class="mat-typography" style="width: 800px;">
-        <mat-toolbar class="prim" style="width: 800px;">
+    <mat-dialog-content class="mat-typography">
+        <mat-toolbar class="prim">
             <mat-toolbar-row fxLayout="row">
                 <span class="title-centers">{{dialogData.action}} Détenteur </span>
             </mat-toolbar-row>
@@ -163,4 +161,3 @@
             (click)="handleSubmit()" [disabled]="!(detForm.valid && detForm.dirty)">Save</button>
         <button mat-raised-button style="color: white; background-color: red;" mat-dialog-close>Close</button>
     </mat-dialog-actions>
-</div>
