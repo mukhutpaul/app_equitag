@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       private ngxService :NgxUiLoaderService) { }
 
  ngOnInit(): void {
+  this.ngxService.stop()
   localStorage.clear();
   
   }
