@@ -1,6 +1,9 @@
-<mat-toolbar color="primary">
+
+
+<mat-dialog-content class="mat-topography">
+<mat-toolbar class="prim">
     <mat-toolbar-row fxLayout="row">
-        <span class="title-center">Detail Détenteur</span>
+        <span class="title-center">EQUIPEMENTS LIES A CE DETENTEUR</span>
         <span class="spacer"></span>
         <button class="mat-dialog-close mat-icon-button mat-dialog-close">
             <mat-icon>cancel</mat-icon>
@@ -8,17 +11,17 @@
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
-
-<mat-dialog-content class="mat-topography">
     <table id="customers">
         <tr>
             <td><b>Name:</b>{{datas.name}}</td>
             <td><b>Post-Nom:</b>{{datas.firstname}}</td>
+			<td><b>Prenom:</b>{{datas.lastname}}</td>
         </tr>
 
         <tr>
+		     <td><b>Sexe:</b>{{datas.sex}}</td>
             <td><b>Grade:</b>{{datas.grade.name}}</td>
-            <td><b>Payment Method:</b>{{data.paymentMethod}}</td>
+            <td><b>Unité:</b>{{datas.unite.name}}</td>
         </tr>
 
     </table>
@@ -34,20 +37,15 @@
         
       </ng-container>
 
-     <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef>Quantity</th>
-        <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+     <ng-container matColumnDef="numero_serie">
+        <th mat-header-cell *matHeaderCellDef>Numéro Serie</th>
+        <td mat-cell *matCellDef="let element">{{element.numero_serie}}</td>
     
      </ng-container>
 
-     <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef>Price</th>
-        <td mat-cell *matCellDef="let element">{{element.price}}</td>
-    
-     </ng-container>
-     <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef>Total</th>
-        <td mat-cell *matCellDef="let element">{{element.total}}</td>
+     <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">{{element.type.name}}</td>
     
      </ng-container>
      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
