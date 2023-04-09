@@ -1,0 +1,26 @@
+<mat-dialog-content class="mat-topography">
+
+    <mat-toolbar class="prim">
+       <mat-toolbar-row fxLayout="row">
+           <span class="title-center">INFORMATION COMPLETE SUR L'EQUIPEMENT</span>
+           <span class="spacer"></span>
+       </mat-toolbar-row>
+   </mat-toolbar>
+   
+       <table id="customers" style="border:1px solid">
+           <tr>
+               <td><b>Name : </b>{{datas.name}}</td>
+               <td><b>Date de fabrication : </b>{{datas.date_fabrication}}</td>
+               <td><b>Type : </b>{{datas.type.name}}</td>
+               
+           </tr>
+           <tr>
+               <td><b>Numéro Serie : </b>{{datas.numero_serie}}</td>
+               <td><b>Date D'enregistrement : </b>{{datas.created_on}}</td>
+           </tr>
+   
+           
+   
+   
+       </table>
+   </mat-dialog-content>

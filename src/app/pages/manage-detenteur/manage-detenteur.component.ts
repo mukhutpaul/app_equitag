@@ -16,6 +16,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UniteService } from 'src/app/services/unite.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { DetailInfodetenteurComponent } from '../../dialog/detail-infodetenteur/detail-infodetenteur.component';
+
 
 @Component({
   selector: 'app-manage-detenteur',
@@ -91,6 +93,19 @@ export class ManageDetenteurComponent  implements OnInit{
       dialogRef.close();
     });
   }
+  
+  handleViewActions(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      data:values
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(DetailInfodetenteurComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+  }
 
   
   // signupAction(){
@@ -153,6 +168,8 @@ export class ManageDetenteurComponent  implements OnInit{
     })
 
   }
+  
+  
   
   delete(id:any){
     this.detService.delete(id).subscribe((response:any)=>{

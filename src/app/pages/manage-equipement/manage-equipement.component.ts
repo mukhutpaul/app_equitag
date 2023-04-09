@@ -16,6 +16,9 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UniteService } from 'src/app/services/unite.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { EquipementInfoComponent } from '../../dialog/equipement-info/equipement-info.component';
+
+
 
 @Component({
   selector: 'app-manage-equipement',
@@ -87,6 +90,19 @@ export class ManageEquipementComponent implements OnInit{
     }
     dialogConfig.width="850px";
     const dialogRef = this.dialog.open(DetailEquipementComponent,dialogConfig);
+
+    this.router.events.subscribe(()=>{
+      dialogRef.close();
+    });
+  }
+
+  handleViewActions(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data={
+      data:values
+    }
+    dialogConfig.width="850px";
+    const dialogRef = this.dialog.open(EquipementInfoComponent,dialogConfig);
 
     this.router.events.subscribe(()=>{
       dialogRef.close();

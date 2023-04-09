@@ -1,0 +1,44 @@
+<mat-dialog-content class="mat-topography">
+    <mat-toolbar class="prim">
+        <mat-toolbar-row fxLayout="row">
+            <span class="title-center">IDENTITE COMPLETE DE DETENTEUR</span>
+            <span class="spacer"></span>
+            <button class="mat-dialog-close mat-icon-button mat-dialog-close">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+        <table id="customers">
+            <tr>
+                <td><b>Nom : </b>{{datas.name}}</td>
+                <td><b>Post-Nom : </b>{{datas.firstname}}</td>
+                <td><b>Prenom : </b>{{datas.lastname}}</td>
+            </tr>
+    
+            <tr>
+                 <td><b>Sexe : </b>{{datas.sex}}</td>
+                <td><b>Grade : </b>{{datas.grade.name}}</td>
+                <td><b>Unité : </b>{{datas.unite.name}}</td>
+            </tr>
+            <tr>
+                <td><b>Bataillon : </b>{{datas.bataillon.name}}</td>
+               <td><b>Etat civil : </b>{{datas.maritalstatus}}</td>
+               <td><b>Ville : </b>{{datas.city}}</td>
+           </tr>
+           <tr>
+                <td><b>Province : </b>{{datas.province.name}}</td>
+               <td><b>Catégorie : </b>{{datas.categorie.name}}</td>
+               <td><b>Groupe sanguin : </b>{{datas.bloodtype}}</td>
+           </tr>
+           <tr>
+                <td><b>Date de naissance : </b>{{datas.birthday}}</td>
+               <td><b>Lieu de naissance : </b>{{datas.birthplace}}</td>
+               <td><b>Date création : </b>{{datas.created_on}}</td>
+           </tr>
+           <tr>
+            <td><b>Date de naissance : </b>{{datas.updated_on}}</td>
+             
+           </tr>
+    
+        </table>
+    </mat-dialog-content>

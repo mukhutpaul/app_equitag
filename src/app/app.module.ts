@@ -53,6 +53,11 @@ import { ManageDetenteurEquipementComponent } from './pages/manage-detenteur-equ
 import { DetenteurEquipementComponent } from './dialog/detenteur-equipement/detenteur-equipement.component';
 import { DetailDetenteurComponent } from './dialog/detail-detenteur/detail-detenteur.component';
 import { DetailEquipementComponent } from './dialog/detail-equipement/detail-equipement.component';
+import { DetailInfodetenteurComponent } from './dialog/detail-infodetenteur/detail-infodetenteur.component';
+import { InfoDetailequipComponent } from './dialog/info-detailequip/info-detailequip.component';
+import { EquipementInfoComponent } from './dialog/equipement-info/equipement-info.component';
+
+
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text:"Loading...",
@@ -106,7 +111,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ManageDetenteurEquipementComponent,
     DetenteurEquipementComponent,
     DetailDetenteurComponent,
-    DetailEquipementComponent
+    DetailEquipementComponent,
+    DetailInfodetenteurComponent,
+    InfoDetailequipComponent,
+    EquipementInfoComponent,
+  
+
   ],
   imports: [
     BrowserModule,
