@@ -62,11 +62,14 @@ export class  ManageEquipementagsComponent implements OnInit{
     },(error)=>{
    
       if(error.error?.message){
+        this.ngxService.stop()
         this.responseMessage = error.error?.Message;
       }
       else{
+        this.ngxService.stop()
         this.responseMessage = GlobalConstants.genericError;
       }
+      this.ngxService.stop()
       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
     })
 
@@ -147,6 +150,7 @@ export class  ManageEquipementagsComponent implements OnInit{
       this.snackbarService.openSnackBar(this.responseMessage,"success");
    },(error:any)=>{ 
     console.log(error);
+   
      if(error.error?.detail){
       this.ngxService.stop()
        this.responseMessage = error.error?.detail;
