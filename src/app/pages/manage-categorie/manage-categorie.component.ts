@@ -62,8 +62,10 @@ export class ManageCategorieComponent implements OnInit{
         this.responseMessage = error.error?.detail;
       }
       else{
+        this.ngxService.stop()
         this.responseMessage = GlobalConstants.genericError;
       }
+      this.ngxService.stop()
       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
     })
 

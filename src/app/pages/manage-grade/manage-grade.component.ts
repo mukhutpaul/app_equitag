@@ -68,8 +68,10 @@ export class ManageGradeComponent implements OnInit{
         this.responseMessage = error.error?.message;
       }
       else{
+        this.ngxService.stop()
         this.responseMessage = GlobalConstants.genericError;
       }
+      this.ngxService.stop()
       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
     })
 

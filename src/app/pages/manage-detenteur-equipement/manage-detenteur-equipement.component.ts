@@ -153,8 +153,10 @@ export class  ManageDetenteurEquipementComponent implements OnInit{
        this.ngxService.stop()
        this.responseMessage = error.error?.detail;
      }else{
+      this.ngxService.stop()
       this.responseMessage = GlobalConstants.genericError;
      }
+     this.ngxService.stop()
      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
    })
   }

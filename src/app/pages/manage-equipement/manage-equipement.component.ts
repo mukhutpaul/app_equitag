@@ -70,8 +70,10 @@ export class ManageEquipementComponent implements OnInit{
         this.responseMessage = error.error?.Message;
       }
       else{
+        this.ngxService.stop()
         this.responseMessage = GlobalConstants.genericError;
       }
+      this.ngxService.stop()
       this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
     })
 
