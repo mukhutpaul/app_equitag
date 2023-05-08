@@ -56,6 +56,7 @@ import { DetailEquipementComponent } from './dialog/detail-equipement/detail-equ
 import { DetailInfodetenteurComponent } from './dialog/detail-infodetenteur/detail-infodetenteur.component';
 import { InfoDetailequipComponent } from './dialog/info-detailequip/info-detailequip.component';
 import { EquipementInfoComponent } from './dialog/equipement-info/equipement-info.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -127,6 +128,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     PdfViewerModule,
     FormsModule,
+    MatSelectModule,  
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],

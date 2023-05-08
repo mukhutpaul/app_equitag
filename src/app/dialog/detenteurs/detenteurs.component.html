@@ -100,6 +100,9 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Categorie</mat-label>
                         <mat-select formControlName="categorie">
+                            <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiCatSearch (input)="onInputCategorie()">
                             <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
                                 {{categorie.name}}
                             </mat-option>
@@ -108,6 +111,9 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Unité</mat-label>
                         <mat-select formControlName="unite">
+                            <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiUniteSearch (input)="onInputChangeUnite()">
                             <mat-option *ngFor="let unite of unites" [value]="unite.id">
                                 {{unite.name}}
                             </mat-option>
@@ -116,6 +122,9 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Grade</mat-label>
                         <mat-select formControlName="grade">
+                            <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiGradeSearch (input)="onInputChangeGrade()">
                             <mat-option *ngFor="let gr of grades" [value]="gr.id">
                                 {{gr.name}}
                             </mat-option>
@@ -127,6 +136,9 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Bataillon</mat-label>
                         <mat-select formControlName="bataillon">
+                            <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiBatSearch (input)="onInputBat()">
                             <mat-option *ngFor="let bt of bataillons" [value]="bt.id">
                                 {{bt.name}}
                             </mat-option>
@@ -134,7 +146,11 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Province</mat-label>
-                        <mat-select formControlName="province">
+                        <mat-select formControlName="province" multiple>
+                            <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiProvSearch (input)="onInputChange()">
+                      
                             <mat-option *ngFor="let pr of provinces" [value]="pr.id">
                                 {{pr.name}}
                             </mat-option>

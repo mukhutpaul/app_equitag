@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter,OnInit,Inject} from '@angular/core';
+import { Component, EventEmitter,OnInit,Inject,ElementRef,ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -23,7 +23,9 @@ export class EquipementsComponent implements OnInit{
   dialogAction:any ="Ajout";
   action:any ="Ajout"; 
   responseMessage:any;
-  types:any=[];
+  types:  Array<any>=[];
+  private _types: Array<any>=[];
+  @ViewChild('multiTypeSearch') multiTypeSearchInput!: ElementRef;
    
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
@@ -71,6 +73,18 @@ export class EquipementsComponent implements OnInit{
       this.getTypes();
      
     }
+
+
+    onInputChangeType() {
+      console.log(this.multiTypeSearchInput.nativeElement.value);
+      const searchInput = this.multiTypeSearchInput.nativeElement.value ?
+      this.multiTypeSearchInput.nativeElement.value.toLowerCase() : '';
+      this.types = this._types.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
   
     // handleSubmit(){
     //   this.ngxService.start();
@@ -164,6 +178,7 @@ export class EquipementsComponent implements OnInit{
     getTypes(){
       this.typeService.getTypes().subscribe((response:any)=>{
         this.types = response?.data;
+        this._types = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();

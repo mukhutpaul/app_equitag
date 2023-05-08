@@ -19,6 +19,9 @@
                 <mat-form-field appearance="fill" fxFlex style="white-space: 50px;width: 750px;">
                     <mat-label>Unité</mat-label>
                     <mat-select formControlName="unite">
+                        <mat-label>Rechercher...</mat-label>
+                            <input type="text" class="p-2" autocomplete="off" matInput placeholder="Search.."
+                            #multiUniteSearch (input)="onInputChangeUnite()">
                         <mat-option *ngFor="let unite of unites"  [value]="unite.id">
                             {{unite.name}}
                         </mat-option>

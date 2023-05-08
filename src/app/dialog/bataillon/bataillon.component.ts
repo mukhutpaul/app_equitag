@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter,OnInit,Inject} from '@angular/core';
+import { Component, EventEmitter,OnInit,Inject, ElementRef,ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -21,9 +21,10 @@ export class BataillonComponent implements OnInit{
   dialogAction:any ="Ajout";
   action:any ="Ajout"; 
   responseMessage:any;
-  unites:any=[];
+  unites:Array<any>=[];
   data:any;
-   
+  private _unites: Array<any>=[];
+  @ViewChild('multiUniteSearch') multiUniteSearchInput!: ElementRef;
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
       private router:Router, private bataillonService:BataillonService,private uniteService:UniteService,
@@ -32,7 +33,7 @@ export class BataillonComponent implements OnInit{
       private ngxService:NgxUiLoaderService) {
     
        }
-  
+   
     ngOnInit(): void {
     
       this.bataillonForm = this.formBuilder.group({
@@ -61,6 +62,17 @@ export class BataillonComponent implements OnInit{
       this.getUnites();
      
     }
+
+    onInputChangeUnite() {
+      console.log(this.multiUniteSearchInput.nativeElement.value);
+      const searchInput = this.multiUniteSearchInput.nativeElement.value ?
+      this.multiUniteSearchInput.nativeElement.value.toLowerCase() : '';
+      this.unites = this._unites.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
   
     // handleSubmit(){
     //   this.ngxService.start();
@@ -152,6 +164,7 @@ export class BataillonComponent implements OnInit{
     getUnites(){
       this.uniteService.getUnites().subscribe((response:any)=>{
         this.unites = response?.data;
+        this._unites = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();

@@ -1,4 +1,4 @@
-import { Component, EventEmitter,OnInit,Inject} from '@angular/core';
+import { Component, EventEmitter,OnInit,Inject, ElementRef,ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -12,23 +12,38 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UniteService } from 'src/app/services/unite.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
+
 @Component({
   selector: 'app-detenteurs',
   templateUrl: './detenteurs.component.html',
   styleUrls: ['./detenteurs.component.scss']
 })
 export class DetenteursComponent implements OnInit{
+
+
   detForm: any = FormGroup;
   onAddDet = new EventEmitter();
   onEditDet = new EventEmitter();
   dialogAction:any ="Ajout";
   action:any ="Ajout"; 
   responseMessage:any;
-  unites:any=[];
-  categories:any=[];
-  grades:any=[];
-  bataillons:any=[];
-  provinces:any=[];
+  unites:Array<any>=[];
+  categories:Array<any>=[];
+  grades:Array<any>=[];
+  bataillons:Array<any>=[];
+  provinces: Array<any>=[];
+  private _provinces: Array<any>=[];
+  private _grades: Array<any>=[];
+  private _categories: Array<any>=[];
+  private _unites: Array<any>=[];
+  private _bataillons: Array<any>=[];
+
+  @ViewChild('multiProvSearch') multiProvSearchInput!: ElementRef;
+  @ViewChild('multiUniteSearch') multiUniteSearchInput!: ElementRef;
+  @ViewChild('multiCatSearch') multiCatSearchInput!: ElementRef;
+  @ViewChild('multiGradeSearch') multiGradSearchInput!: ElementRef;
+  @ViewChild('multiBatSearch') multiBatSearchInput!: ElementRef;
+
    
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
@@ -41,6 +56,8 @@ export class DetenteursComponent implements OnInit{
       private snackbarService:SnackbarService,
       private dialogRef:MatDialogRef<DetenteursComponent>,
       private ngxService:NgxUiLoaderService) { }
+      
+  
   
     ngOnInit(): void {
       
@@ -61,6 +78,8 @@ export class DetenteursComponent implements OnInit{
         grade:[null,[Validators.required]],
         province:[null,[Validators.required]],
       });
+
+ 
       
     
       if(this.dialogData.action === "Modification"){
@@ -99,6 +118,64 @@ export class DetenteursComponent implements OnInit{
      console.log(this.provinces)
      console.log(this.grades)
     }
+
+    onInputChange() {
+     console.log(this.multiProvSearchInput.nativeElement.value);
+     const searchInput = this.multiProvSearchInput.nativeElement.value ?
+     this.multiProvSearchInput.nativeElement.value.toLowerCase() : '';
+     this.provinces = this._provinces.filter(p =>{
+       const name: string = p.name.toLocaleLowerCase();
+       return name.indexOf(searchInput) > -1;
+     });
+    
+    }
+
+    onInputChangeUnite() {
+      console.log(this.multiUniteSearchInput.nativeElement.value);
+      const searchInput = this.multiUniteSearchInput.nativeElement.value ?
+      this.multiUniteSearchInput.nativeElement.value.toLowerCase() : '';
+      this.unites = this._unites.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
+
+     onInputCategorie() {
+      console.log(this.multiCatSearchInput.nativeElement.value);
+      const searchInput = this.multiCatSearchInput.nativeElement.value ?
+      this.multiCatSearchInput.nativeElement.value.toLowerCase() : '';
+      this.categories = this._categories.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
+
+     onInputBat() {
+      console.log(this.multiBatSearchInput.nativeElement.value);
+      const searchInput = this.multiBatSearchInput.nativeElement.value ?
+      this.multiBatSearchInput.nativeElement.value.toLowerCase() : '';
+      this.bataillons = this._bataillons.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
+
+    onInputChangeGrade() {
+      console.log(this.multiGradSearchInput.nativeElement.value);
+      const searchInput = this.multiGradSearchInput.nativeElement.value ?
+      this.multiGradSearchInput.nativeElement.value.toLowerCase() : '';
+    
+     this.grades = this._grades.filter(u =>{
+       const name: string = u.name.toLocaleLowerCase();
+       return name.indexOf(searchInput) > -1;
+     });
+
+     }
+
+     
   
     // handleSubmit(){
     //   this.ngxService.start();
@@ -214,6 +291,7 @@ export class DetenteursComponent implements OnInit{
     getUnites(){
       this.uniteService.getUnites().subscribe((response:any)=>{
         this.unites = response?.data;
+        this._unites  = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -229,7 +307,7 @@ export class DetenteursComponent implements OnInit{
     getCategories(){
       this.catserv.getCategories().subscribe((response:any)=>{
         this.categories = response?.data;
-        
+        this._categories  = response?.data;
      },(error:any)=>{
        this.dialogRef.close();
        if(error.error?.detail){
@@ -243,6 +321,7 @@ export class DetenteursComponent implements OnInit{
     getGrade(){
       this.grserv.getGrades().subscribe((response:any)=>{
         this.grades = response?.data;
+        this._grades  = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -258,6 +337,7 @@ export class DetenteursComponent implements OnInit{
     getProvinces(){
       this.prserv.getProvinces().subscribe((response:any)=>{
         this.provinces = response?.data;
+        this._provinces =  response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -273,6 +353,7 @@ export class DetenteursComponent implements OnInit{
     getBataillons(){
       this.bataillonService.getBataillons().subscribe((response:any)=>{
         this.bataillons = response?.data;
+        this._bataillons = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -289,4 +370,8 @@ export class DetenteursComponent implements OnInit{
   }
   
 
+
+function viewChild(arg0: string): (target: DetenteursComponent, propertyKey: "multiProvSearchInput") => void {
+  throw new Error('Function not implemented.');
+}
 

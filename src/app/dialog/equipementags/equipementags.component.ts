@@ -1,4 +1,4 @@
-import { Component, EventEmitter,OnInit,Inject} from '@angular/core';
+import { Component, EventEmitter,OnInit,Inject,ElementRef,ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -23,8 +23,12 @@ export class  EquipementagsComponent implements OnInit{
   dialogAction:any ="Ajout";
   action:any ="Ajout"; 
   responseMessage:any;
-  tags:any=[];
-  equipements:any=[];
+  tags:Array<any>=[];
+  equipements:Array<any>=[];
+  private _tags: Array<any>=[];
+  private _equipements: Array<any>=[];
+  @ViewChild('multiTagSearch') multiTagSearchInput!: ElementRef;
+  @ViewChild('multiEqSearch') multiEqSearchInput!: ElementRef;
    
 
     constructor(private formBuilder:FormBuilder,@Inject(MAT_DIALOG_DATA) public dialogData:any,
@@ -93,6 +97,28 @@ export class  EquipementagsComponent implements OnInit{
         this.add();
       }
     }
+
+    onInputChangeEq() {
+      console.log(this.multiEqSearchInput.nativeElement.value);
+      const searchInput = this.multiEqSearchInput.nativeElement.value ?
+      this.multiEqSearchInput.nativeElement.value.toLowerCase() : '';
+      this.equipements = this._equipements.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
+
+     onInputChangeTag() {
+      console.log(this.multiTagSearchInput.nativeElement.value);
+      const searchInput = this.multiTagSearchInput.nativeElement.value ?
+      this.multiTagSearchInput.nativeElement.value.toLowerCase() : '';
+      this.tags = this._tags.filter(p =>{
+        const name: string = p.name.toLocaleLowerCase();
+        return name.indexOf(searchInput) > -1;
+      });
+     
+     }
   
    add(){
       var formData = this.eqtagForm.value;
@@ -143,6 +169,7 @@ export class  EquipementagsComponent implements OnInit{
     getTags(){
       this.tagService.getTags().subscribe((response:any)=>{
         this.tags = response?.data;
+        this._tags = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
@@ -158,6 +185,7 @@ export class  EquipementagsComponent implements OnInit{
     getEquipements(){
       this.eqService.getEquipements().subscribe((response:any)=>{
         this.equipements = response?.data;
+        this._equipements = response?.data;
         
      },(error:any)=>{
        this.dialogRef.close();
