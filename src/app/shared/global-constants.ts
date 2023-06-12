@@ -1,3 +1,5 @@
+
+
 export class GlobalConstants{
 
     //Message
@@ -16,6 +18,7 @@ export class GlobalConstants{
     public static contactNumberRegex:string = "^[e0-9]{10,10}$";
     public static numericRegex:string = "^(([1-9]*)|(([1-9]*)\.([0-9]*)))$"
     public static dateRegex:string = "((?:19|20)\\d\\d)-(0?[1-9]|1[012])-([12][0-9]|3[01]|0?[1-9])";
+ 
 
     //variable
 

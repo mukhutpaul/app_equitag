@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { environment } from 'src/app/environment/environment';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
@@ -10,23 +11,38 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
  username:any;
  password:any;
  responseMessage:any;
+ adr:any;
+
+ public static  adrServeur:any;
 
     constructor( private router:Router,
       private userService:UserService,
       private snackbarService:SnackbarService,
-      private ngxService :NgxUiLoaderService) { }
-
+      private ngxService :NgxUiLoaderService) {LoginComponent.adrServeur = this.adr; }
+ 
  ngOnInit(): void {
   this.ngxService.stop()
   localStorage.clear();
-  
+
   }
 
+ adresse(){
+    LoginComponent.adrServeur = this.adr;
+    localStorage.setItem('adresse',this.adr);
+    this.router.navigate(['/']);
+
+   
+  }
+
+
+
 login(){
+  console.log(localStorage.setItem('adresse',this.adr))
   this.ngxService.start()
   var data ={
       username:this.username,
@@ -53,4 +69,7 @@ login(){
       
     })
   }
+
+  
 }
+

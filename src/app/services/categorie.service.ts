@@ -9,7 +9,7 @@ export class CategorieService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = environment.apiUrl;
+  url =  localStorage.getItem('adresse');
 
   addCategorie(data: any) {
     return this.httpClient.post(this.url +

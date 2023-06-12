@@ -9,7 +9,7 @@ export class TagService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = environment.apiUrl;
+  url =  localStorage.getItem('adresse');
 
   addTag(data: any) {
     return this.httpClient.post(this.url +
