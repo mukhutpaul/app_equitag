@@ -4,6 +4,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { environment } from 'src/app/environment/environment';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
+import swal from 'sweetalert2';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
  password:any;
  responseMessage:any;
  adr:any;
+ val :any='http://127.0.0.1:8000'
 
  public static  adrServeur:any;
 
@@ -32,10 +34,21 @@ export class LoginComponent implements OnInit {
   }
 
  adresse(){
-    LoginComponent.adrServeur = this.adr;
+   // LoginComponent.adrServeur = this.adr;
+    //this.router.navigate(['/']);
     localStorage.setItem('adresse',this.adr);
-    this.router.navigate(['/']);
-
+    swal.fire({
+      title: 'Vous serez conncté au serveur : '+this.adr,
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#00c292',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+       // this.router.navigate(['/']);
+      } 
+    })
    
   }
 
