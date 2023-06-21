@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
 
 
 login(){
-  console.log(localStorage.setItem('adresse',this.adr))
+  console.log(localStorage.getItem('adresse'))
   this.ngxService.start()
   var data ={
       username:this.username,

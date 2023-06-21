@@ -9,7 +9,7 @@ export class HomeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');
+  url =  environment.apiUrl;
 
   addGrade(data: any) {
     return this.httpClient.post(this.url +

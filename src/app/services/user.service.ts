@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = localStorage.getItem('adresse');
+  url = localStorage.getItem('adresse')
 
   signup(data: any) {
     return this.httpClient.post(this.url +

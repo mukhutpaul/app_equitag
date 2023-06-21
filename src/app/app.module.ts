@@ -57,6 +57,7 @@ import { DetailInfodetenteurComponent } from './dialog/detail-infodetenteur/deta
 import { InfoDetailequipComponent } from './dialog/info-detailequip/info-detailequip.component';
 import { EquipementInfoComponent } from './dialog/equipement-info/equipement-info.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -75,6 +76,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     FooterComponent,
     HeaderComponent,
@@ -122,6 +124,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
     MatButtonModule,
