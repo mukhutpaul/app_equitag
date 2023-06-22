@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     constructor( private router:Router,
       private userService:UserService,
       private snackbarService:SnackbarService,
-      private ngxService :NgxUiLoaderService) {LoginComponent.adrServeur = this.adr; }
+      private ngxService :NgxUiLoaderService) { }
  
  ngOnInit(): void {
   this.ngxService.stop()

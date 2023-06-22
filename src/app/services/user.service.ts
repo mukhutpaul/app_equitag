@@ -12,7 +12,8 @@ export class UserService {
   url = localStorage.getItem('adresse')
 
   signup(data: any) {
-    return this.httpClient.post(localStorage.getItem('adresse') +
+    console.log("hHHHH"+this.url)
+    return this.httpClient.post(this.url+
       "/api/register/", data, {
       headers: new HttpHeaders().set('Content-type',"application/json")
     });
