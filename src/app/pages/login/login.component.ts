@@ -6,6 +6,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import swal from 'sweetalert2';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -18,16 +19,23 @@ export class LoginComponent implements OnInit {
  password:any;
  responseMessage:any;
  adr:any;
- val :any='http://127.0.0.1:8000'
+loginForm: any = FormGroup;
+
+
 
  public static  adrServeur:any;
 
     constructor( private router:Router,
       private userService:UserService,
       private snackbarService:SnackbarService,
-      private ngxService :NgxUiLoaderService) { }
+      private ngxService :NgxUiLoaderService,private formBuilder:FormBuilder) { }
  
  ngOnInit(): void {
+  this.loginForm = this.formBuilder.group({
+    username:['',[Validators.required]],
+    password:['',[Validators.required]]
+
+  })
   this.ngxService.stop()
   localStorage.clear();
 
@@ -57,9 +65,10 @@ export class LoginComponent implements OnInit {
 login(){
   //console.log(localStorage.getItem('adresse'))
   this.ngxService.start()
+  var formData = this.loginForm.value;
   var data ={
-      username:this.username,
-      password:this.password
+      username:formData.username,
+      password:formData.password
     }
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
