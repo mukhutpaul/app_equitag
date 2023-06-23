@@ -9,7 +9,7 @@ export class EquipementagsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');
+  url =  environment.apiUrl;
 
   addEqTag(data: any) {
     return this.httpClient.post(this.url +

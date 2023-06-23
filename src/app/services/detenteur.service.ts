@@ -9,7 +9,7 @@ export class DetenteurService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');
+  url =  environment.apiUrl;
 
   add(data: any) {
     return this.httpClient.post(this.url +

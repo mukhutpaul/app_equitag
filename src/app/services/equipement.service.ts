@@ -9,7 +9,7 @@ export class EquipementService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');
+  url = environment.apiUrl;
 
   addEq(data: any) {
     return this.httpClient.post(this.url +

@@ -9,7 +9,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = localStorage.getItem('adresse')
+  url:any = environment.apiUrl
+ 
 
   signup(data: any) {
     console.log("hHHHH"+this.url)

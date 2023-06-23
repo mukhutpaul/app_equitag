@@ -9,7 +9,7 @@ export class TypeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');;
+  url =  environment.apiUrl;
 
   addType(data: any) {
     return this.httpClient.post(this.url +

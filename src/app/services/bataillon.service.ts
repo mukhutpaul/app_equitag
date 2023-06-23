@@ -9,7 +9,7 @@ export class BataillonService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url =  localStorage.getItem('adresse');
+  url = environment.apiUrl;
 
   addBataillon(data: any) {
     return this.httpClient.post(this.url +
