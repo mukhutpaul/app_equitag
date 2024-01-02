@@ -39,37 +39,6 @@ export class CategorieComponent implements OnInit{
       }
     }
   
-    // handleSubmit(){
-    //   this.ngxService.start();
-    //   var formData = this.signupForm.value;
-    //   var data = {
-    //     name: formData.name,
-    //     email: formData.email,
-    //     contactNumber: formData.contactNumber,
-    //     password: formData.password
-    //   }
-  
-    //   this.userService.signup(data).subscribe((response:any)=>{
-    //     this.ngxService.stop();
-    //     this.dialogRef.close();
-    //     this.responseMessage =response?.message;
-    //     this.snackbarService.openSnackBar(this.responseMessage,"");
-    //     this.router.navigate(['/utilisateur']);
-    //   },
-    //   (error)=>{
-    //     this.ngxService.stop();
-    //     if(error.error?.message){
-    //       this.responseMessage = error.error?.message;
-    //     }
-    //     else{
-    //       this.responseMessage = GlobalConstants.genericError;
-    //     }
-  
-    //     this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
-      
-    //   })
-    // }
-  
     handleSubmit(){ 
       if(this.dialogAction === "Modification"){
         this.edit();

@@ -135,7 +135,7 @@ export class ManageGradeComponent implements OnInit{
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data ={
-      message:'delete '+value.name
+      message:'delete '+ value.name
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response:any)=>{

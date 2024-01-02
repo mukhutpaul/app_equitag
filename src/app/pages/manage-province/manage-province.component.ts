@@ -31,6 +31,7 @@ export class ManageProvinceComponent implements OnInit{
   dataSource:any;
   responseMessage:any;
   total:any;
+  lpr:any="active";
   
  
   @ViewChild(MatPaginator) paginator: MatPaginator  = <MatPaginator>{};

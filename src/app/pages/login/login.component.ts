@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import swal from 'sweetalert2';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -73,7 +74,6 @@ login(){
     console.log(data)
     this.userService.login(data).subscribe((response:any)=>{
       localStorage.setItem('token',response.token);
-      
       this.router.navigate(['darshboard']);
       //this.ngxService.stop()
       console.log(response.data)

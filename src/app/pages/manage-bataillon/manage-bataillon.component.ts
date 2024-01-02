@@ -21,7 +21,7 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
 })
 export class ManageBataillonComponent implements OnInit{
 
-  displayedColumns:string[]=['name','unite','edit'];;
+  displayedColumns:string[]=['name','unite','edit'];
   dataSource:any;
   responseMessage:any;
   total:any;

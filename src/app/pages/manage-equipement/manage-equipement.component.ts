@@ -170,7 +170,6 @@ export class ManageEquipementComponent implements OnInit{
       this.deleteq(value.id);
       dialogRef.close();
     })
-
   }
   
   deleteq(id:any){
